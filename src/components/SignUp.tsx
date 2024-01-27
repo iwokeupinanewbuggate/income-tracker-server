@@ -22,11 +22,14 @@ const SignUp = () => {
   const signUp = async (): Promise<void> => {
     if (name !== "" && email !== "" && pass !== "" && RePass !== "") {
       try {
-        const response = await axios.post(`http://localhost:9090/users`, {
-          name: name,
-          email: email,
-          password: pass,
-        });
+        const response = await axios.post(
+          `https://income-tracker-service-4glo.onrender.com/users`,
+          {
+            name: name,
+            email: email,
+            password: pass,
+          }
+        );
         console.log(response);
         setEmail(""), setPass(""), setName(""), setRePass("");
         alert("Successfully signed up");
