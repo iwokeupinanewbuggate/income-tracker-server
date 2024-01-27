@@ -67,7 +67,7 @@ const SignUp = () => {
   };
   const handleRePass: ChangeEventHandler<HTMLInputElement> = (event) => {
     const RePassChecker = event.target.value;
-    if (pass === RePass || pass == "") {
+    if (pass === RePassChecker || pass == "") {
       setRePassErr("");
     } else {
       setRePassErr("Re-Enter your password");
