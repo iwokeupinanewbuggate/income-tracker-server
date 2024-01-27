@@ -1,39 +1,10 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
-import { ChangeEventHandler, useState } from "react";
+import SignUp from "@/components/SignUp";
+import { GeldIcons } from "@/icons/geld";
+import Router from "next/router";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-
-  const handleName: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleEmail: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePass: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setPass(event.target.value);
-  };
-
-  const signUp = async (): Promise<void> => {
-    return axios
-      .post(`http://localhost:3000/users`, {
-        name: name,
-        email: email,
-        password: pass,
-      })
-      .then((res: AxiosResponse) => {
-        console.log(res);
-        setEmail(""), setPass(""), setEmail("");
-      })
-      .catch((err: AxiosError) => {
-        console.error(err);
-
-        throw err;
-      });
+  const toLogin = () => {
+    Router.push("/login");
   };
   return (
     <div
@@ -45,13 +16,68 @@ const Register = () => {
         height: "100vh",
       }}
     >
-      <div style={{ backgroundColor: "red" }}>
-        <input value={name} onChange={handleName} />
-        <input value={email} onChange={handleEmail} />
-        <input type="password" value={pass} onChange={handlePass} />
-        <button onClick={() => signUp}>Sing Up</button>
-        <h1>Working from postman</h1>
+      <div
+        style={{
+          backgroundColor: "white",
+          display: "flex",
+          width: "50vw",
+          height: "100vh",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "black",
+          fontFamily: "sans-serif",
+          gap: "50px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "500px",
+            flexDirection: "column",
+            gap: "40px",
+            top: "20vh",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ display: "flex", gap: "10px" }}>
+              <GeldIcons /> <h2>Geld</h2>
+            </div>{" "}
+            <h1 style={{ fontSize: "20px" }}>Create Geld account</h1>
+            <p style={{ color: "#334155" }}>
+              Sign up below to create your Wallet account
+            </p>
+          </div>
+        </div>
+        <div>
+          <SignUp />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            width: "300px",
+            justifyContent: "space-evenly",
+            fontSize: "13px",
+          }}
+        >
+          <p>Already have account?</p>{" "}
+          <p style={{ color: "#0166FF" }} onClick={toLogin}>
+            Log in
+          </p>
+        </div>
       </div>
+      <div
+        style={{ width: "50vw", height: "100vh", background: " #0166FF" }}
+      ></div>
     </div>
   );
 };
