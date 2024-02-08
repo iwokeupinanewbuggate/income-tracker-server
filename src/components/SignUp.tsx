@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Router from "next/router";
 import { ChangeEventHandler, useState } from "react";
 import { RegisterStyle } from "@/pages/register/register";
@@ -28,14 +28,16 @@ const SignUp = () => {
         console.log(response);
         setEmail(""), setPass(""), setName(""), setRePass("");
         setLoading(false);
-        if (response.status === 400) {
-          alert("Email already in use");
-        } else {
+        if (response.status === 200) {
           alert("Successfully signed up");
         }
         Router.push("/Stepper");
+        localStorage.setItem("id", response.data.user._id);
       } catch (err) {
         setLoading(false);
+        if ((err as AxiosError).response?.status === 400) {
+          alert("Email already used");
+        }
       }
     } else {
       alert("Fill all the input");

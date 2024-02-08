@@ -33,10 +33,13 @@ const SignIn = () => {
     if (pass !== "" && email !== "") {
       try {
         setLoading(true);
-        const res = await axios.post(`http://localhost:9090/user`, {
-          email: email,
-          password: pass,
-        });
+        const res = await axios.post(
+          `https://income-tracker-service-4glo.onrender.com/user`,
+          {
+            email: email,
+            password: pass,
+          }
+        );
         console.log(res);
 
         if (res.status === 200) {

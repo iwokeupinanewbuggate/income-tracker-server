@@ -28,9 +28,7 @@ const currencyOptions = [
 ];
 const HorizontalLinearStepper = () => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+
   const handleReset = () => {
     setActiveStep(0);
     Router.push("/");
@@ -81,7 +79,7 @@ const HorizontalLinearStepper = () => {
         <div>
           <Selectcurrency
             currencyOptions={currencyOptions}
-            handleNext={handleNext}
+            setActiveStep={setActiveStep}
           />
         </div>
       )}

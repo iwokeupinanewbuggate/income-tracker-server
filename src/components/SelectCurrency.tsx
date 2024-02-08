@@ -1,13 +1,30 @@
 import { MoneyIcon } from "@/icons/money";
 import Button from "@mui/material/Button";
+import axios from "axios";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+
 interface SelectCurrencyProps {
   currencyOptions: string[];
-  handleNext: () => void;
+  setActiveStep: Dispatch<SetStateAction<number>>;
 }
 const Selectcurrency: React.FC<SelectCurrencyProps> = ({
   currencyOptions,
-  handleNext,
+  setActiveStep,
 }) => {
+  const selectCurrency = async (e: ChangeEvent<HTMLSelectElement>) => {
+    const id = localStorage.getItem("id");
+    console.log(id);
+    try {
+      await axios.put(`http://localhost:9090`, {
+        currency_type: e.target.value,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const nextStep = () => {
+    setActiveStep((prevActiveStep: number) => prevActiveStep + 1);
+  };
   return (
     <div
       style={{
@@ -34,6 +51,7 @@ const Selectcurrency: React.FC<SelectCurrencyProps> = ({
       </div>
       <h2 style={{ fontFamily: "sans-serif" }}>Select base currency</h2>
       <select
+        onChange={selectCurrency}
         style={{
           backgroundColor: "white",
           color: "black",
@@ -44,8 +62,8 @@ const Selectcurrency: React.FC<SelectCurrencyProps> = ({
           width: "40vw",
         }}
       >
-        {currencyOptions.map((option: string) => (
-          <option key={option}>{option}</option>
+        {currencyOptions.map((currency: string) => (
+          <option key={currency}>{currency}</option>
         ))}
       </select>
       <p
@@ -59,7 +77,7 @@ const Selectcurrency: React.FC<SelectCurrencyProps> = ({
         in other currencies will be calculated based on this one{" "}
       </p>
       <Button
-        onClick={handleNext}
+        onClick={nextStep}
         style={{
           padding: "20px",
           backgroundColor: "#0166FF",
@@ -69,7 +87,7 @@ const Selectcurrency: React.FC<SelectCurrencyProps> = ({
         }}
       >
         Confirm
-      </Button>{" "}
+      </Button>
     </div>
   );
 };
