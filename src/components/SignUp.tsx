@@ -1,6 +1,8 @@
 import axios from "axios";
 import Router from "next/router";
 import { ChangeEventHandler, useState } from "react";
+import { RegisterStyle } from "@/pages/register/register";
+import { Hourglass } from "react-loader-spinner";
 const SignUp = () => {
   const [name, setName] = useState("");
   const [nameErr, setNameErr] = useState("");
@@ -10,18 +12,11 @@ const SignUp = () => {
   const [passErr, setPassErr] = useState("");
   const [RePass, setRePass] = useState("");
   const [RePassErr, setRePassErr] = useState("");
-  const style = {
-    backgroundColor: "#F3F4F6",
-    border: "1px solid grey",
-    padding: "10px",
-    borderRadius: "5px",
-    width: "25vw",
-    color: "black",
-  };
-
+  const [loading, setLoading] = useState(false);
   const signUp = async (): Promise<void> => {
     if (name !== "" && email !== "" && pass !== "" && RePass !== "") {
       try {
+        setLoading(true);
         const response = await axios.post(
           `https://income-tracker-service-4glo.onrender.com/users`,
           {
@@ -32,10 +27,15 @@ const SignUp = () => {
         );
         console.log(response);
         setEmail(""), setPass(""), setName(""), setRePass("");
-        alert("Successfully signed up");
-        Router.push("/");
+        setLoading(false);
+        if (response.status === 400) {
+          alert("Email already in use");
+        } else {
+          alert("Successfully signed up");
+        }
+        Router.push("/Stepper");
       } catch (err) {
-        alert("Something is wrong");
+        setLoading(false);
       }
     } else {
       alert("Fill all the input");
@@ -70,7 +70,7 @@ const SignUp = () => {
   };
   const handleRePass: ChangeEventHandler<HTMLInputElement> = (event) => {
     const RePassChecker = event.target.value;
-    if (pass === RePassChecker || pass == "") {
+    if (pass === RePassChecker || RePassChecker == "") {
       setRePassErr("");
     } else {
       setRePassErr("Re-Enter your password");
@@ -78,58 +78,65 @@ const SignUp = () => {
     setRePass(RePassChecker);
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "30px",
-        width: "25vw",
-      }}
-    >
-      <input
-        placeholder="Name"
-        value={name}
-        onChange={handleName}
-        style={style}
-      />
-      <p>{nameErr}</p>
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={handleEmail}
-        style={style}
-      />
-      <p>{emailErr}</p>
-      <input
-        placeholder="Password"
-        type="password"
-        value={pass}
-        onChange={handlePass}
-        style={style}
-      />
-      <p>{passErr}</p>
-      <input
-        placeholder="Re-assword"
-        type="password"
-        value={RePass}
-        onChange={handleRePass}
-        style={style}
-      />
-      <p>{RePassErr}</p>
-      <button
-        style={{
-          width: "25vw",
-          backgroundColor: "#0166FF",
-          padding: "10px",
-          border: "none",
-          borderRadius: "20px",
-        }}
-        onClick={() => signUp()}
-      >
-        Sign Up
-      </button>
+    <div style={{ ...RegisterStyle.SignUpInputDiv, flexDirection: "column" }}>
+      <div>
+        <input
+          placeholder="Name"
+          value={name}
+          onChange={handleName}
+          style={RegisterStyle.inputStyle}
+        />
+        <p style={{ color: "black", height: "20px" }}>{nameErr}</p>
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={handleEmail}
+          style={RegisterStyle.inputStyle}
+        />
+        <p style={{ color: "black", height: "20px" }}>{emailErr}</p>
+        <input
+          placeholder="Password"
+          type="password"
+          value={pass}
+          onChange={handlePass}
+          style={RegisterStyle.inputStyle}
+        />
+        <p style={{ color: "black", height: "20px" }}>{passErr}</p>
+        <input
+          placeholder="Re-password"
+          type="password"
+          value={RePass}
+          onChange={handleRePass}
+          style={RegisterStyle.inputStyle}
+        />
+        <p style={{ color: "black", height: "20px" }}>{RePassErr}</p>
+      </div>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Hourglass
+            visible={true}
+            height="40"
+            width="40"
+            ariaLabel="hourglass-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            colors={["#306cce", "#72a1ed"]}
+          />
+        </div>
+      ) : (
+        <button
+          style={RegisterStyle.SignUpSubmitButton}
+          onClick={() => signUp()}
+        >
+          Sign Up
+        </button>
+      )}
     </div>
   );
 };

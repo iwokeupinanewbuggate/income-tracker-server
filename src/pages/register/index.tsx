@@ -1,5 +1,6 @@
 import SignUp from "@/components/SignUp";
 import { GeldIcons } from "@/icons/geld";
+import { RegisterStyle } from "./register";
 import Router from "next/router";
 
 const Register = () => {
@@ -47,29 +48,33 @@ const Register = () => {
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "column",
+              gap: "45px",
             }}
           >
             <div style={{ display: "flex", gap: "10px" }}>
               <GeldIcons /> <h2>Geld</h2>
-            </div>{" "}
-            <h1 style={{ fontSize: "20px" }}>Create Geld account</h1>
-            <p style={{ color: "#334155" }}>
-              Sign up below to create your Wallet account
-            </p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <h1 style={{ fontSize: "20px" }}>Create Geld account</h1>
+              <p style={{ color: "#334155" }}>
+                Sign up below to create your Wallet account
+              </p>
+            </div>
           </div>
         </div>
         <div>
           <SignUp />
         </div>
-        <div
-          style={{
-            display: "flex",
-            width: "300px",
-            justifyContent: "space-evenly",
-            fontSize: "13px",
-          }}
-        >
-          <p>Already have account?</p>{" "}
+        <div style={RegisterStyle.ButtonStyle}>
+          <p>Already have account?</p>
           <p style={{ color: "#0166FF" }} onClick={toLogin}>
             Log in
           </p>
