@@ -63,7 +63,9 @@ const Register = () => {
                 alignItems: "center",
               }}
             >
-              <h1 style={{ fontSize: "20px" }}>Create Geld account</h1>
+              <h1 style={{ fontSize: "20px", display: "flex" }}>
+                Create Geld account
+              </h1>
               <p style={{ color: "#334155" }}>
                 Sign up below to create your Wallet account
               </p>

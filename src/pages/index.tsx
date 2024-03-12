@@ -1,22 +1,56 @@
-import Router from "next/router";
+import { WealthIncomeExpense } from "@/components/IncExpWealth";
+import { VerticelDoughnutBars } from "@/components/Bars";
+import { Record } from "@/components/Record";
+import NavBar from "@/components/NavBar";
+
+// import { Record } from "@/components/Record";
+// import { ContextProvider } from "./context/RecordContext";
+
 export default function Home() {
-  const signUp = () => {
-    Router.push("/register");
-  };
   return (
-    <div>
+    <>
+      <NavBar />
       <div
         style={{
-          position: "fixed",
-          top: "0",
           width: "100vw",
-          height: "10vh",
-          color: "white",
+          height: "100vh",
+          backgroundColor: "#e8e8e8",
+          paddingLeft: "5vw",
+          paddingRight: "5vw",
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
         }}
-      ></div>
-      <div>
-        <button onClick={signUp}>signUP</button>
+      >
+        <div
+          style={{
+            paddingTop: "10px",
+          }}
+        >
+          <WealthIncomeExpense />
+        </div>
+
+        <div
+          style={{
+            width: "100%",
+
+            color: "#000",
+          }}
+        >
+          <VerticelDoughnutBars />
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            backgroundColor: "white",
+
+            borderRadius: "10px",
+          }}
+        >
+          <Record />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

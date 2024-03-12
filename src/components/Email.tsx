@@ -58,7 +58,7 @@ const Email: React.FC<EmailProps> = ({ setActiveStep }) => {
       </div>
       <h2 style={{ fontFamily: "sans-serif" }}>Set up your cash Balance</h2>
       <input
-        placeholder="Email"
+        placeholder="Amount"
         style={{
           width: "40vw",
           backgroundColor: "#F3F4F6",

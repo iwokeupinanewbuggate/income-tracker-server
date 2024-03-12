@@ -1,0 +1,93 @@
+.button {
+    transition: background-color 1s ease;
+    cursor: pointer;
+    color: black;
+    width: 12vw;
+    border-radius: 30px;
+    border: none;
+  }
+
+.container {
+  font-family:sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar{
+  width: 50vw;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+}
+
+.closeButton{
+  background-color: white;
+  color: black;
+  border: none;
+}
+
+.incomeExpenseSelectContainer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #F3F4F6;
+  width: 24vw;
+  height: 4vh;
+  border-radius: 30px;
+}
+
+.amountCategoryInput{
+  background-color: #D1D5DB;
+  border: none;
+  color: black;
+  padding: 15px;
+  width: 20vw;
+  border-radius: 10px;
+}
+
+.date{
+  background-color: #D1D5DB;
+  border: none;
+  padding: 15px;
+  color: black;
+  width: 20vw;
+  border-radius: 10px;
+}
+
+.addRecord{
+  background-color: #0166FF;
+  width: 20vw;
+  height: 3vh;
+  border-radius: 10px;
+  border: none;
+}
+
+.noteTitleContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.title{
+  background-color: #D1D5DB;
+  border: none;
+  padding: 15px;
+  color: black;
+  width: 20vw;
+  border-radius: 10px;
+}
+
+.note{
+  background-color: #D1D5DB;
+  width: 20vw;
+  height: 25vh;
+  border-radius: "10px";
+  padding: 25px;
+  border: none;
+  color: black;
+}

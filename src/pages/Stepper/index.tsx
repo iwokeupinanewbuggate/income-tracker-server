@@ -7,6 +7,7 @@ import { GeldIcons } from "@/icons/geld";
 import Selectcurrency from "@/components/SelectCurrency";
 import Router from "next/router";
 import Email from "@/components/Email";
+import { GoodJob } from "@/icons/GJ";
 const steps = ["Currency", "Balance", "Finish"];
 const currencyOptions = [
   "MNT - Mongolian Tugrik",
@@ -89,8 +90,36 @@ const HorizontalLinearStepper = () => {
         </div>
       )}
       {activeStep === 2 && (
-        <div>
-          <Button onClick={handleReset}>Go to Dashboard</Button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            fontFamily: "sans-serif",
+            gap: "35px",
+          }}
+        >
+          <GoodJob />
+          <h1 style={{ color: "black" }}>Good Job</h1>
+          <p style={{ color: "#475569", width: "350px" }}>
+            Your very first account has been created. Now continue to dashboard
+            and start tracking
+          </p>
+          <div>
+            <Button
+              onClick={handleReset}
+              style={{
+                padding: "20px",
+                backgroundColor: "#0166FF",
+                color: "white",
+                width: "40vw",
+                borderRadius: "30px",
+              }}
+            >
+              Go to Dashboard
+            </Button>
+          </div>
         </div>
       )}
     </div>
