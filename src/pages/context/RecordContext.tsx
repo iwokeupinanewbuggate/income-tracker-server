@@ -1,10 +1,8 @@
-import axios from "axios";
 import React, {
   Dispatch,
   ReactNode,
   createContext,
   useContext,
-  useEffect,
   useState,
 } from "react";
 type DataType = {
@@ -25,18 +23,6 @@ interface Type {
 export const MyContext = createContext<MyContextType | undefined>(undefined);
 export const ContextProvider: React.FC<Type> = ({ children }) => {
   const [data, setData] = useState<DataType[]>();
-  useEffect(() => {
-    const getRecords = async () => {
-      try {
-        const res = await axios.get(`http://localhost:9090/GetRecords`);
-        console.log(res);
-        setData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getRecords();
-  }, []);
 
   return (
     <MyContext.Provider value={{ data, setData }}>

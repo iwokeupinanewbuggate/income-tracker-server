@@ -7,7 +7,7 @@ export const WealthIncomeExpense = () => {
       style={{
         display: "flex",
         width: "90vw",
-        justifyContent: "space-evenly",
+        justifyContent: "space-around",
       }}
     >
       <Wealth />

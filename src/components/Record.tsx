@@ -32,6 +32,7 @@ export const Record = () => {
           color: "black",
           padding: "20px",
           fontFamily: "sans-serif",
+          height: "28vh",
         }}
       >
         <div

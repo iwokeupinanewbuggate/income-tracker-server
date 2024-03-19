@@ -1,6 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import styles from "@/styles/Bars/doughnutBar.module.css";
 const categories = ["Bills", "Food", "Shopping", "Insurance", "Clothing"];
 const expenses = [300, 50, 100, 200, 150];
 const colors = ["#1C64F2", "#E74694", "#FDBA8C", `#16BDCA`, `#F2901C`];
@@ -26,53 +27,18 @@ const options = {
 };
 function DoughnutChart() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "49%",
-        borderRadius: "12px",
-        border: "1px solid #E5E5E5",
-        backgroundColor: "#fff",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 20px",
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.incomeExpenseSum}>
         <h3>Income - Expenses</h3>
         <p>Total: {sum}$</p>
       </div>
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: "#F5F5F5",
-          height: "1px",
-          margin: "10px 0",
-          alignItems: "center",
-        }}
-      />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-          paddingTop: "70px",
-        }}
-      >
+      <div className={styles.doughnutContainer} />
+
+      <div className={styles.doughnutLabelContainer}>
         <Doughnut
           data={dataSet}
           options={options}
-          style={{
-            maxHeight: "20vh",
-            maxWidth: "20vw",
-          }}
+          className={styles.doughnutSize}
         />
         <Labels />
       </div>

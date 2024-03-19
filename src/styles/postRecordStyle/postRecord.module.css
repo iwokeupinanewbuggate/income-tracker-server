@@ -1,24 +1,22 @@
 .button {
-    transition: background-color 1s ease;
-    cursor: pointer;
-    color: black;
-    width: 12vw;
-    border-radius: 30px;
-    border: none;
-  }
-
-.container {
-  font-family:sans-serif;
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-  justify-content: center;
-  align-items: center;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  color: black;
+  width: 12vw;
+  border-radius: 30px;
+  border: none;
 }
 
-.navbar{
+.container {
+  font-family: sans-serif;
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+}
+
+.navbar {
   width: 50vw;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -26,7 +24,7 @@
   top: 0;
 }
 
-.closeButton{
+.closeButton {
   background-color: white;
   color: black;
   border: none;
@@ -35,14 +33,14 @@
 .incomeExpenseSelectContainer {
   display: flex;
   justify-content: space-evenly;
-  background-color: #F3F4F6;
-  width: 24vw;
+  background-color: #f3f4f6;
+  width: 20vw;
   height: 4vh;
   border-radius: 30px;
 }
 
-.amountCategoryInput{
-  background-color: #D1D5DB;
+.amountCategoryInput {
+  background-color: #d1d5db;
   border: none;
   color: black;
   padding: 15px;
@@ -50,8 +48,8 @@
   border-radius: 10px;
 }
 
-.date{
-  background-color: #D1D5DB;
+.date {
+  background-color: #d1d5db;
   border: none;
   padding: 15px;
   color: black;
@@ -59,22 +57,24 @@
   border-radius: 10px;
 }
 
-.addRecord{
-  background-color: #0166FF;
+.addRecord {
+  transition: background-color 0.5s ease;
+  background-color: #0166ff;
   width: 20vw;
   height: 3vh;
   border-radius: 10px;
   border: none;
+  padding: 10px;
 }
 
-.noteTitleContainer{
+.noteTitleContainer {
   display: flex;
   flex-direction: column;
   gap: 3vh;
 }
 
-.title{
-  background-color: #D1D5DB;
+.title {
+  background-color: #d1d5db;
   border: none;
   padding: 15px;
   color: black;
@@ -82,12 +82,30 @@
   border-radius: 10px;
 }
 
-.note{
-  background-color: #D1D5DB;
+.note {
+  background-color: #d1d5db;
   width: 20vw;
   height: 25vh;
-  border-radius: "10px";
+  border-radius: 20px;
   padding: 25px;
   border: none;
   color: black;
+}
+
+.valueContainer {
+  display: flex;
+  gap: 2vw;
+  padding-top: 20px;
+}
+
+.eachValue {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.smallContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
 }

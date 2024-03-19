@@ -6,7 +6,7 @@ const Wealth = () => {
         style={{
           backgroundImage: `url(${CardPic.src})`,
           height: "215px",
-          width: "22vw",
+          width: "400px",
           position: "relative",
           backgroundRepeat: "no-repeat",
         }}

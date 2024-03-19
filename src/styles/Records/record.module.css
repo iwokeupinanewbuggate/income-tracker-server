@@ -1,0 +1,11 @@
+.checkboxInput {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+
+.checkboxInput:checked {
+  background-color: #007bff;
+}

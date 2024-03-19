@@ -1,83 +1,51 @@
 import { Plus } from "@/icons/Plus";
 import { GeldIcons } from "@/icons/geld";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import PostRecord from "./PostRecord";
-
+import styles from "@/styles/navBar.module.css";
 const NavBar = () => {
   const queryPath = useRouter().pathname;
-
   const isPageOnRegisterPage =
     queryPath === "/register" || queryPath === "/login";
-
+  const isPageOnRecord = queryPath === "/records";
+  const toRecord = () => {
+    Router.push("/records");
+  };
+  const toDashBoard = () => {
+    Router.push("/");
+  };
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "10px",
-        backgroundColor: "white",
-        padding: "30px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        paddingLeft: "5vw",
-        paddingRight: "5vw",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          gap: "30px",
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.buttonContainer}>
         <GeldIcons />
         {!isPageOnRegisterPage && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "15vw",
-            }}
-          >
-            <button
-              style={{
-                backgroundColor: "white",
-                border: "none",
-                color: "black",
-              }}
-            >
-              Dashboard
-            </button>
-            <button
-              style={{
-                backgroundColor: "white",
-                border: "none",
-                color: "black",
-              }}
-            >
-              Records
-            </button>
+          <div className={styles.recDashbuttonContainer}>
+            {isPageOnRecord && (
+              <>
+                <button className={styles.button} onClick={toDashBoard}>
+                  Dashboard
+                </button>
+                <button className={styles.button}>
+                  <h4> Records</h4>
+                </button>
+              </>
+            )}
+            {!isPageOnRecord && (
+              <>
+                <button className={styles.button}>
+                  <h4> Dashboard</h4>
+                </button>
+                <button className={styles.button} onClick={toRecord}>
+                  Records
+                </button>
+              </>
+            )}
           </div>
         )}
       </div>
-      <div
-        style={{
-          display: "flex",
-          gap: "30px",
-        }}
-      >
+      <div className={styles.buttonContainer}>
         {!isPageOnRegisterPage && (
-          <button
-            style={{
-              border: "none",
-              color: "white",
-              backgroundColor: "#0166FF",
-              display: "flex",
-              alignItems: "center",
-              gap: "5px",
-              borderRadius: "10px",
-              padding: "5px",
-            }}
-          >
+          <button className={styles.postButton}>
             <Plus /> <PostRecord />
           </button>
         )}
