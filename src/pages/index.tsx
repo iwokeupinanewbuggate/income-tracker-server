@@ -2,21 +2,13 @@ import { WealthIncomeExpense } from "@/components/IncExpWealth";
 import { VerticelDoughnutBars } from "@/components/Bars";
 import { Record } from "@/components/Record";
 import NavBar from "@/components/NavBar";
+import styles from "@/styles/Home.module.css" 
 export default function Home() {
   return (
     <>
       <NavBar />
       <div
-        style={{
-          width: "100vw",
-          height: "94.5vh",
-          backgroundColor: "#e8e8e8",
-          paddingLeft: "5vw",
-          paddingRight: "5vw",
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-        }}
+       className={styles.container}
       >
         <div
           style={{
@@ -29,7 +21,6 @@ export default function Home() {
         <div
           style={{
             width: "100%",
-
             color: "#000",
           }}
         >
@@ -40,7 +31,6 @@ export default function Home() {
           style={{
             display: "flex",
             backgroundColor: "white",
-
             borderRadius: "10px",
           }}
         >

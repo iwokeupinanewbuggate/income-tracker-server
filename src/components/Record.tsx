@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RecordHistory from "./RecordsBody";
 import axios from "axios";
+import styles from "@/styles/Records/lastRecord.module.css"
 type DataType = {
   userId: string;
   category: string;
@@ -26,33 +27,15 @@ export const Record = () => {
   return (
     <>
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          color: "black",
-          padding: "20px",
-          fontFamily: "sans-serif",
-          height: "30vh",
-        }}
+       className={styles.container}
       >
         <div
-          style={{
-            borderBottom: "1px #d2d4d2 solid",
-            width: "88vw",
-            padding: "20pxs",
-          }}
+         className={styles.title}
         >
           <h3>Last Records</h3>
         </div>
         <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            padding: "10px",
-            overflow: "scroll",
-            height: "30vh",
-          }}
+        className={styles.recordContainer}
         >
           {data.map((info, key) => {
             return <RecordHistory info={info} key={key} />;

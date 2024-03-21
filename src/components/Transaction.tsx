@@ -31,7 +31,7 @@ export const RecordTransaction = ({
           <div style={{ color: "black" }}>
             <h3>{transactionInfo.transactionTitle}</h3>
             <h3>{transactionInfo.category}</h3>
-            <h6></h6>
+            
           </div>
           <div>
             {
