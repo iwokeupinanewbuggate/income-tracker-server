@@ -1,5 +1,5 @@
 import { House } from "@/icons/House";
-import React, { useEffect, useState } from "react";
+import React from "react";
 interface Record {
   category: string;
   transactionTitle: string;
@@ -8,16 +8,13 @@ interface Record {
   transactionType: string;
 }
 const RecordHistory = ({ info }: { info: Record }) => {
-  const [income, setIncome] = useState(true);
-  useEffect(() => {
-    incomeOrExpense();
-  });
-  const incomeOrExpense = () => {
-    if (info.transactionType === "income") {
-      setIncome(true);
-    } else if (info.transactionType === "expense") {
-      setIncome(false);
-    }
+  const getBgColor = (transactionType: string) => {
+    if (transactionType === "expense") return "red";
+    return "green";
+  };
+  const expenseOrIncome = (transactionType: string) => {
+    if (transactionType === "expense") return "-";
+    return "+";
   };
   const createdAt = new Date(info.createdAt);
   const now = new Date();
@@ -30,7 +27,6 @@ const RecordHistory = ({ info }: { info: Record }) => {
         gap: "5px",
         fontFamily: "sans-serif",
         borderBottom: "1px #d2d4d2 solid",
-        width: "85vw",
         paddingBottom: "5px",
         paddingTop: "5px",
         alignItems: "center",
@@ -54,6 +50,7 @@ const RecordHistory = ({ info }: { info: Record }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          width: "80vw",
         }}
       >
         <div style={{ color: "black" }}>
@@ -62,26 +59,18 @@ const RecordHistory = ({ info }: { info: Record }) => {
           <h6>{diffrenceHours}</h6>
         </div>
         <div>
-          {income && (
+          {
             <div
               style={{
                 display: "flex",
-                color: "green",
+                color: `${getBgColor(info.transactionType)}`,
                 alignItems: "center",
               }}
             >
-              <p>+</p>
+              <p>{expenseOrIncome(info.transactionType)}</p>
               <p>{info.amount}</p>
             </div>
-          )}
-          {!income && (
-            <div
-              style={{ display: "flex", color: "red", alignItems: "center" }}
-            >
-              <p>-</p>
-              <p>{info.amount}</p>
-            </div>
-          )}
+          }
         </div>
       </div>
     </div>

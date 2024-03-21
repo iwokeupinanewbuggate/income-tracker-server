@@ -2,10 +2,6 @@ import { WealthIncomeExpense } from "@/components/IncExpWealth";
 import { VerticelDoughnutBars } from "@/components/Bars";
 import { Record } from "@/components/Record";
 import NavBar from "@/components/NavBar";
-
-// import { Record } from "@/components/Record";
-// import { ContextProvider } from "./context/RecordContext";
-
 export default function Home() {
   return (
     <>
@@ -13,7 +9,7 @@ export default function Home() {
       <div
         style={{
           width: "100vw",
-          height: "100vh",
+          height: "94.5vh",
           backgroundColor: "#e8e8e8",
           paddingLeft: "5vw",
           paddingRight: "5vw",

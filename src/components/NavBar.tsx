@@ -45,9 +45,9 @@ const NavBar = () => {
       </div>
       <div className={styles.buttonContainer}>
         {!isPageOnRegisterPage && (
-          <button className={styles.postButton}>
+          <div className={styles.postButton}>
             <Plus /> <PostRecord />
-          </button>
+          </div>
         )}
       </div>
     </div>
