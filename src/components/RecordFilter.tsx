@@ -1,13 +1,8 @@
 import styles from "@/styles/Records/recordFilter.module.css";
 import { Category } from "./category";
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler } from "react";
 
-interface TransactionType {
-  transactionType: string;
-  transactionTitle: string;
-  amount: number;
-  category: string;
-}
+
 export const RecordFilter = ({
   filterType, 
   setFilterType

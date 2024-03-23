@@ -11,7 +11,6 @@ export const Category = () => {
     "Donation",
     "Gift",
     "Lend",
-   
   ];
 
   return (
