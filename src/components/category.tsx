@@ -4,12 +4,14 @@ import styles from "@/styles/Records/recordFilter.module.css";
 export const Category = () => {
   const category = [
     "Bill",
+    "Scam",
     "Food",
     "Clothing",
     "Salaries",
     "Donation",
     "Gift",
     "Lend",
+   
   ];
 
   return (
@@ -20,7 +22,6 @@ export const Category = () => {
             <div key={key} className={styles.categoryContainer}>
               <Eye />
               <div className={styles.category}>
-                {" "}
                 <h4>{category}</h4>
                 <Arrow />
               </div>

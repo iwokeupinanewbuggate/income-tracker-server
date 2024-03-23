@@ -1,10 +1,9 @@
-.container{
+.container {
   width: 100vw;
-        height: 94.5vh;
-        background-color: #e8e8e8;
-        padding-left: 5vw;
-        padding-right: 5vw;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+  background-color: #e8e8e8;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

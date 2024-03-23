@@ -1,7 +1,38 @@
 import styles from "@/styles/Records/recordFilter.module.css";
 import { Category } from "./category";
+import { MouseEventHandler, useState } from "react";
 
-export const RecordFilter = () => {
+interface TransactionType {
+  transactionType: string;
+  transactionTitle: string;
+  amount: number;
+  category: string;
+}
+export const RecordFilter = ({
+  filterType, 
+  setFilterType
+}: {
+  filterType: string, 
+  setFilterType:(type:string) =>void
+}) => {
+
+
+  const filterRecordByIncome: MouseEventHandler<HTMLInputElement>  = () => {
+    if(filterType !== 'income'){
+      setFilterType('income')
+    }
+    }
+    
+const filterRecordByExpense: MouseEventHandler<HTMLInputElement>  = () => {
+  if(filterType !== 'expense'){
+    setFilterType('expense')
+  }
+}
+
+const filterRecordAll : MouseEventHandler<HTMLInputElement>  = () => {
+    setFilterType('all')
+} 
+ 
   return (
     <div className={styles.container}>
       <div>
@@ -13,15 +44,25 @@ export const RecordFilter = () => {
         </div>
         <div className={styles.typeSmallContainer}>
           <div className={styles.eachTypeSyle}>
-            <input type="checkbox" className={styles.checkboxInput} />
+            <input checked={filterType === "all"} type="checkbox" className={styles.checkboxInput} onClick={filterRecordAll}/>
             <h4>All</h4>
           </div>
           <div className={styles.eachTypeSyle}>
-            <input type="checkbox" className={styles.checkboxInput} />
+            <input
+              checked={filterType === 'income'}
+              type="checkbox"
+              className={styles.checkboxInput}
+              onClick={filterRecordByIncome}
+            />
             <h4>Income</h4>
           </div>
           <div className={styles.eachTypeSyle}>
-            <input type="checkbox" className={styles.checkboxInput} />
+            <input
+              checked={filterType =='expense'}
+              type="checkbox"
+              className={styles.checkboxInput}
+          onClick={filterRecordByExpense}
+            />
             <h4>Expense</h4>
           </div>
         </div>

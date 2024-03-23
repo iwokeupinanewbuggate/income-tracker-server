@@ -14,6 +14,8 @@ interface TransactionType {
 export default function Records() {
   const [transaction, setTransaction] = useState<TransactionType[]>([]);
 
+  const [filterType, setFilterTyle] = useState<string>('all')
+
   useEffect(() => {
     const GetAllTransaction = async () => {
       try {
@@ -27,13 +29,15 @@ export default function Records() {
     GetAllTransaction();
   }, []);
 
+  const data = filterType==='income'? transaction.filter(transaction => transaction.transactionType === "income"): filterType==='expense' ?   transaction.filter(transaction => transaction.transactionType === "expense") : transaction
+
   return (
     <div>
       <NavBar />
       <div className={styles.container}>
-        <RecordFilter />
+        <RecordFilter filterType={filterType} setFilterType={setFilterTyle} />
         <div className={styles.recordTransactionContainer}>
-          {transaction.map((transactionInfo, key: number) => {
+          {data.map((transactionInfo, key: number) => {
             return (
               <RecordTransaction transactionInfo={transactionInfo} key={key} />
             );
