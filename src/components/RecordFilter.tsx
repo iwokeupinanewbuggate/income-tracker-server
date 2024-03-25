@@ -2,32 +2,31 @@ import styles from "@/styles/Records/recordFilter.module.css";
 import { Category } from "./category";
 import { MouseEventHandler } from "react";
 
+import { AddNewCategory } from "./AddNewCategory";
 
 export const RecordFilter = ({
-  filterType, 
-  setFilterType
+  filterType,
+  setFilterType,
 }: {
-  filterType: string, 
-  setFilterType:(type:string) =>void
+  filterType: string;
+  setFilterType: (type: string) => void;
 }) => {
-
-
-  const filterRecordByIncome: MouseEventHandler<HTMLInputElement>  = () => {
-    if(filterType !== 'income'){
-      setFilterType('income')
+  const filterRecordByIncome: MouseEventHandler<HTMLInputElement> = () => {
+    if (filterType !== "income") {
+      setFilterType("income");
     }
-    }
-    
-const filterRecordByExpense: MouseEventHandler<HTMLInputElement>  = () => {
-  if(filterType !== 'expense'){
-    setFilterType('expense')
-  }
-}
+  };
 
-const filterRecordAll : MouseEventHandler<HTMLInputElement>  = () => {
-    setFilterType('all')
-} 
- 
+  const filterRecordByExpense: MouseEventHandler<HTMLInputElement> = () => {
+    if (filterType !== "expense") {
+      setFilterType("expense");
+    }
+  };
+
+  const filterRecordAll: MouseEventHandler<HTMLInputElement> = () => {
+    setFilterType("all");
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -39,12 +38,17 @@ const filterRecordAll : MouseEventHandler<HTMLInputElement>  = () => {
         </div>
         <div className={styles.typeSmallContainer}>
           <div className={styles.eachTypeSyle}>
-            <input checked={filterType === "all"} type="checkbox" className={styles.checkboxInput} onClick={filterRecordAll}/>
+            <input
+              checked={filterType === "all"}
+              type="checkbox"
+              className={styles.checkboxInput}
+              onClick={filterRecordAll}
+            />
             <h4>All</h4>
           </div>
           <div className={styles.eachTypeSyle}>
             <input
-              checked={filterType === 'income'}
+              checked={filterType === "income"}
               type="checkbox"
               className={styles.checkboxInput}
               onClick={filterRecordByIncome}
@@ -53,10 +57,10 @@ const filterRecordAll : MouseEventHandler<HTMLInputElement>  = () => {
           </div>
           <div className={styles.eachTypeSyle}>
             <input
-              checked={filterType =='expense'}
+              checked={filterType == "expense"}
               type="checkbox"
               className={styles.checkboxInput}
-          onClick={filterRecordByExpense}
+              onClick={filterRecordByExpense}
             />
             <h4>Expense</h4>
           </div>
@@ -64,6 +68,11 @@ const filterRecordAll : MouseEventHandler<HTMLInputElement>  = () => {
       </div>
       <div>
         <h3>Category</h3>
+      </div>
+      <div>
+        <div>
+          <AddNewCategory />
+        </div>
       </div>
       <div className={styles.categoryContainer}>
         <Category />
