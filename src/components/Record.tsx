@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import RecordHistory from "./RecordsBody";
-import axios from "axios";
-import styles from "@/styles/Records/lastRecord.module.css"
+import styles from "@/styles/Records/lastRecord.module.css";
 type DataType = {
   userId: string;
   category: string;
@@ -10,33 +8,14 @@ type DataType = {
   createdAt: string;
   transactionType: string;
 };
-export const Record = () => {
-  const [data, setData] = useState<DataType[]>([]);
-  useEffect(() => {
-    const getRecords = async () => {
-      try {
-        const res = await axios.get(`http://localhost:9090/GetRecords`);
-        console.log(res);
-        setData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getRecords();
-  }, []);
+export const Record = ({ data }: { data: DataType[] }) => {
   return (
     <>
-      <div
-       className={styles.container}
-      >
-        <div
-         className={styles.title}
-        >
+      <div className={styles.container}>
+        <div className={styles.title}>
           <h3>Last Records</h3>
         </div>
-        <div
-        className={styles.recordContainer}
-        >
+        <div className={styles.recordContainer}>
           {data.map((info, key) => {
             return <RecordHistory info={info} key={key} />;
           })}

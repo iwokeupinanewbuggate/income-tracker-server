@@ -1,0 +1,51 @@
+.addNewCategoryButton {
+  width: 22vw;
+  background-color: #0166ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 20px;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+.titleExitButton {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  width: 20vw;
+  padding: 20px;
+}
+
+.newCategoryContanier {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.newCategoryInput {
+  width: 15vw;
+  padding: 5px;
+  background-color: #d1d5db;
+  border: none;
+  border-radius: 5px;
+  color: black;
+}
+
+.postNewCategory {
+  background-color: #16a34a;
+  border-radius: 20px;
+  padding: 10px;
+  border: none;
+  width: 15vw;
+}

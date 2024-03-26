@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { PostValue } from "./PostRecordValue";
+import styles from "@/styles/postRecordStyle/postRecord.module.css";
 const style = {
   position: "absolute",
   top: "30%",
@@ -26,15 +27,7 @@ export default function PostRecord() {
 
   return (
     <div>
-      <Button
-        style={{
-          backgroundColor: "#0166FF",
-          border: "none",
-          color: "white",
-          fontSize: "10px",
-        }}
-        onClick={handleOpen}
-      >
+      <Button className={styles.postButton} onClick={handleOpen}>
         Record
       </Button>
       <Modal open={open} onClose={handleClose}>

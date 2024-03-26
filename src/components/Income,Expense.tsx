@@ -25,12 +25,13 @@ export const Income = () => {
           margin: "20px",
         }}
       >
-        <h4 style={{ top: "-15px", position: "relative" }}>Your Income</h4>
+        {/* <h4 style={{ top: "-15px", position: "relative" }}>{type}</h4>
         <div></div>
-        <h1>120000</h1>
-        <p>Your Income Amount</p>
+        <h1>{amount}</h1>
+        <p>Your {type} Amount</p> */}
         <div style={{ display: "flex", gap: "5px" }}>
-          <IncomeIcon />
+          {<IncomeIcon />}
+
           <p>32% from last month</p>
         </div>
       </div>

@@ -109,3 +109,10 @@
   flex-direction: column;
   gap: 3vh;
 }
+
+.postButton {
+  background-color: #0166ff;
+  border: none;
+  color: white;
+  font-size: 10px;
+}
