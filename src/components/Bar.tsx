@@ -7,6 +7,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ChartData,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import styles from "@/styles/Bars/vercticleBar.module.css";
@@ -21,7 +22,7 @@ ChartJS.register(
 );
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
-const data = {
+const data: ChartData<'bar'> = {
   labels,
   datasets: [
     {
@@ -30,7 +31,7 @@ const data = {
         return Math.random() * 30;
       }),
       backgroundColor: "#84CC16",
-      borderRadius: "30",
+      borderRadius: 30,
     },
     {
       label: "Expense",
@@ -38,7 +39,7 @@ const data = {
         return Math.random() * 30;
       }),
       backgroundColor: "#F97316",
-      borderRadius: "30",
+      borderRadius: 30,
     },
   ],
 };
