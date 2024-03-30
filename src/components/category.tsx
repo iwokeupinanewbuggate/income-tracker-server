@@ -4,21 +4,25 @@ import styles from "@/styles/Records/recordFilter.module.css";
 import { MouseEventHandler } from "react";
 
 export const Category = ({
-  categoryList,
+  defaultCategoryList,
   findTheCategory,
 }: {
-  categoryList: string[];
+  defaultCategoryList: string[];
   findTheCategory: MouseEventHandler<HTMLHeadingElement>;
 }) => {
   return (
     <>
       <div className={styles.EachCategoryStyle}>
-        {categoryList.map((category: string, key: number) => {
+        {defaultCategoryList.map((category: string, key: number) => {
           return (
-            <div key={key} className={styles.categoryContainer}>
+            <div
+              onClick={findTheCategory}
+              key={key}
+              className={styles.categoryContainer}
+            >
               <Eye />
               <div className={styles.category}>
-                <h4 onClick={findTheCategory}>{category}</h4>
+                <h4>{category}</h4>
                 <Arrow />
               </div>
             </div>

@@ -1,73 +1,37 @@
 import { ExpenseIcon } from "@/icons/ExpenseIcon";
 import { IncomeIcon } from "@/icons/incomeIcon";
-
-export const Income = () => {
+import styles from "@/styles/cards/totalCard.module.css";
+export const Card = ({ type, amount }: { type: string; amount: string }) => {
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        borderRadius: "20px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-
-        color: "black",
-        fontFamily: "sans-serif",
-        height: "215px",
-        width: "400px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          margin: "20px",
-        }}
-      >
-        {/* <h4 style={{ top: "-15px", position: "relative" }}>{type}</h4>
-        <div></div>
+    <div className={styles.container}>
+      <div className={styles.secondContainer}>
+        {type === "Income" && (
+          <div className={styles.typeContainer}>
+            <div className={styles.greenDot}></div>
+            <h4 className={styles.type}>Your {type}</h4>
+          </div>
+        )}
+        {type === "Expense" && (
+          <div className={styles.typeContainer}>
+            <div className={styles.blueDot}></div>
+            <h4 className={styles.type}>Your {type}</h4>
+          </div>
+        )}
+        <div className={styles.line}></div>
         <h1>{amount}</h1>
-        <p>Your {type} Amount</p> */}
-        <div style={{ display: "flex", gap: "5px" }}>
-          {<IncomeIcon />}
+        <p>Your {type} Amount</p>
+        <div className={styles.iconContainer}>
+          {type === "Income" && (
+            <div>
+              <IncomeIcon />
+            </div>
+          )}
+          {type === "Expense" && (
+            <div>
+              <ExpenseIcon />
+            </div>
+          )}
 
-          <p>32% from last month</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export const Expense = () => {
-  return (
-    <div
-      style={{
-        backgroundColor: "white",
-        borderRadius: "20px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        color: "black",
-        fontFamily: "sans-serif",
-        height: "215px",
-        width: "400px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          margin: "20px",
-        }}
-      >
-        <h4>Your Expenses</h4>
-        <div></div>
-        <h1>120000</h1>
-        <p>Your Expense Amount</p>
-        <div style={{ display: "flex", gap: "5px" }}>
-          <ExpenseIcon />
           <p>32% from last month</p>
         </div>
       </div>

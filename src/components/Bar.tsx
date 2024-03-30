@@ -22,7 +22,8 @@ ChartJS.register(
 );
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
-const data: ChartData<'bar'> = {
+
+const data: ChartData<"bar"> = {
   labels,
   datasets: [
     {

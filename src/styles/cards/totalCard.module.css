@@ -1,0 +1,53 @@
+.container {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  font-family: sans-serif;
+  height: 215px;
+  width: 400px;
+}
+
+.secondContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+}
+
+.type {
+  position: relative;
+}
+
+.typeContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.blueDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #0166ff;
+}
+
+.greenDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #84cc16;
+}
+
+.line {
+  width: 360px;
+  border-bottom: 1px #e2e8f0 solid;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 5px;
+}

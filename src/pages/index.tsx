@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 type DataType = {
-  userId: string;
+  _id: string;
   category: string;
   transactionTitle: string;
   amount: string;

@@ -1,7 +1,7 @@
 import RecordHistory from "./RecordsBody";
 import styles from "@/styles/Records/lastRecord.module.css";
 type DataType = {
-  userId: string;
+  _id: string;
   category: string;
   transactionTitle: string;
   amount: string;

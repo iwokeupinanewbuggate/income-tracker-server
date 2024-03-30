@@ -1,17 +1,34 @@
 import styles from "@/styles/postRecordStyle/postRecord.module.css";
 import axios from "axios";
 import { useState } from "react";
-import { NoteTitle } from "./RecordTItleNote";
-import { AmountCategoryDate } from "./RecordValue";
-export const PostValue = ({ handleClose }: { handleClose: () => void }) => {
+import { EditAmountCategoryDate } from "./EditessentialValue";
+import { EditNoteTitle } from "./EditDetail";
+interface TransactionType {
+  _id: string;
+  transactionType: string;
+  transactionTitle: string;
+  amount: string;
+  category: string;
+  note: string;
+  date: string;
+}
+export const EditValue = ({
+  handleClose,
+  transactionInfo,
+  transactionId,
+}: {
+  handleClose: () => void;
+  transactionInfo: TransactionType;
+  transactionId: string;
+}) => {
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("#F3F4F6");
   const [transactionType, setTransactionType] = useState("expense");
-  const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
-  const [title, setTitle] = useState("");
-  const [note, setNote] = useState("");
+  const [amount, setAmount] = useState(transactionInfo.amount);
+  const [category, setCategory] = useState(transactionInfo.category);
+  const [date, setDate] = useState(transactionInfo.date);
+  const [title, setTitle] = useState(transactionInfo.transactionTitle);
+  const [note, setNote] = useState(transactionInfo.note);
   const [buttonColor, setButtonColor] = useState("#0166FF");
   const handleExpIncClick = (buttonNumber: number) => {
     if (buttonNumber === 1) {
@@ -26,12 +43,13 @@ export const PostValue = ({ handleClose }: { handleClose: () => void }) => {
       setButtonColor("#16A34A");
     }
   };
-  const PostTrancsaction = async () => {
+  const EditTRansaction = async () => {
     const RealAmount = parseInt(amount, 10);
+    console.log(amount);
     if (category !== "" && date !== "" && title !== "") {
       try {
         const res = await axios.post(
-          `http://localhost:9090/CreateTransaction`,
+          `http://localhost:9090/editTransaction/${transactionId}`,
           {
             transactionType: transactionType,
             amount: RealAmount,
@@ -62,8 +80,8 @@ export const PostValue = ({ handleClose }: { handleClose: () => void }) => {
           </button>
         </div>
         <div className={styles.valueContainer}>
-          <AmountCategoryDate
-            PostTrancsaction={PostTrancsaction}
+          <EditAmountCategoryDate
+            EditTransaction={EditTRansaction}
             handleExpIncClick={handleExpIncClick}
             setAmount={setAmount}
             setCategory={setCategory}
@@ -75,7 +93,7 @@ export const PostValue = ({ handleClose }: { handleClose: () => void }) => {
             category={category}
             date={date}
           />
-          <NoteTitle
+          <EditNoteTitle
             setTitle={setTitle}
             title={title}
             setNote={setNote}

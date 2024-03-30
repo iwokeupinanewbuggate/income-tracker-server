@@ -7,13 +7,13 @@ import { AddNewCategory } from "./AddNewCategory";
 export const RecordFilter = ({
   filterType,
   setFilterType,
-  categoryList,
+  defaultCategoryList,
   findTheCategory,
 }: {
   filterType: string;
   setFilterType: (type: string) => void;
 
-  categoryList: string[];
+  defaultCategoryList: string[];
   findTheCategory: MouseEventHandler<HTMLHeadingElement>;
 }) => {
   const filterRecordByIncome: MouseEventHandler<HTMLInputElement> = () => {
@@ -81,7 +81,7 @@ export const RecordFilter = ({
       </div>
       <div className={styles.categoryContainer}>
         <Category
-          categoryList={categoryList}
+          defaultCategoryList={defaultCategoryList}
           findTheCategory={findTheCategory}
         />
       </div>
