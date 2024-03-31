@@ -16,10 +16,14 @@ export const EditValue = ({
   handleClose,
   transactionInfo,
   transactionId,
+  transaction,
+  setTransaction,
 }: {
   handleClose: () => void;
   transactionInfo: TransactionType;
   transactionId: string;
+  transaction: TransactionType[];
+  setTransaction: React.Dispatch<React.SetStateAction<TransactionType[]>>;
 }) => {
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("#F3F4F6");
@@ -45,10 +49,9 @@ export const EditValue = ({
   };
   const EditTRansaction = async () => {
     const RealAmount = parseInt(amount, 10);
-    console.log(amount);
     if (category !== "" && date !== "" && title !== "") {
       try {
-        const res = await axios.post(
+        const res = await axios.put(
           `http://localhost:9090/editTransaction/${transactionId}`,
           {
             transactionType: transactionType,
@@ -59,6 +62,9 @@ export const EditValue = ({
             createdAt: date,
           }
         );
+        // transaction.filter((record) => {
+        //   record._id === res.data._id;
+        // });
         console.log(res);
         handleClose();
       } catch (err) {
@@ -67,7 +73,14 @@ export const EditValue = ({
     } else {
       console.log("Fill in the inputs");
     }
-    console.log(category, date, title, transactionType, RealAmount);
+    console.log(
+      category,
+      date,
+      title,
+      transactionType,
+      RealAmount,
+      transactionId
+    );
   };
 
   return (

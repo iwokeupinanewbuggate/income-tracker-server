@@ -83,6 +83,8 @@ export const RecordTransaction = ({
             <EditTransaction
               transactionInfo={transactionInfo}
               transactionId={transactionId}
+              transaction={transaction}
+              setTransaction={setTransaction}
             />
           </div>
         </div>

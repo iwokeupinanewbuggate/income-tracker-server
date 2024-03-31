@@ -34,9 +34,13 @@ interface TransactionType {
 export default function EditTransaction({
   transactionInfo,
   transactionId,
+  transaction,
+  setTransaction,
 }: {
   transactionInfo: TransactionType;
   transactionId: string;
+  transaction: TransactionType[];
+  setTransaction: React.Dispatch<React.SetStateAction<TransactionType[]>>;
 }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -55,6 +59,8 @@ export default function EditTransaction({
             transactionInfo={transactionInfo}
             handleClose={handleClose}
             transactionId={transactionId}
+            transaction={transaction}
+            setTransaction={setTransaction}
           />
         </Box>
       </Modal>
