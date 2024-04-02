@@ -6,8 +6,9 @@ import Button from "@mui/material/Button";
 import { GeldIcons } from "@/icons/geld";
 import Selectcurrency from "@/components/SelectCurrency";
 import Router from "next/router";
-import Email from "@/components/Email";
+import Email from "@/components/BankBalance";
 import { GoodJob } from "@/icons/GJ";
+import styles from "@/styles/Stepper/LastStep.module.css";
 const steps = ["Currency", "Balance", "Finish"];
 const currencyOptions = [
   "MNT - Mongolian Tugrik",
@@ -35,34 +36,13 @@ const HorizontalLinearStepper = () => {
     Router.push("/");
   };
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          gap: "15px",
-          alignItems: "center",
-          top: "5vh",
-          position: "absolute",
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.iconNameContainer}>
         <GeldIcons />
-        <h1 style={{ fontFamily: "sans-serif", color: "black" }}>Geld</h1>
+        <h1>Geld</h1>
       </div>
 
-      <Stepper
-        activeStep={activeStep}
-        style={{ top: "15vh", position: "absolute" }}
-      >
+      <Stepper activeStep={activeStep} className={styles.checkList}>
         {steps.map((label) => {
           const stepProps: { completed?: boolean } = {};
           const labelProps: {
@@ -90,33 +70,15 @@ const HorizontalLinearStepper = () => {
         </div>
       )}
       {activeStep === 2 && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            fontFamily: "sans-serif",
-            gap: "35px",
-          }}
-        >
+        <div className={styles.lastStepContainer}>
           <GoodJob />
-          <h1 style={{ color: "black" }}>Good Job</h1>
-          <p style={{ color: "#475569", width: "350px" }}>
+          <h1>Good Job</h1>
+          <p className={styles.extraInfo}>
             Your very first account has been created. Now continue to dashboard
             and start tracking
           </p>
           <div>
-            <Button
-              onClick={handleReset}
-              style={{
-                padding: "20px",
-                backgroundColor: "#0166FF",
-                color: "white",
-                width: "40vw",
-                borderRadius: "30px",
-              }}
-            >
+            <Button onClick={handleReset} className={styles.goToButton}>
               Go to Dashboard
             </Button>
           </div>

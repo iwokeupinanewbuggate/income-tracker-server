@@ -1,0 +1,48 @@
+.ButtonStyle {
+  display: flex;
+  width: 300px;
+  justify-content: space-evenly;
+  font-size: 13px;
+}
+.inputStyle {
+  background-color: #f3f4f6;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 5px;
+  width: 25vw;
+  color: black;
+}
+.SignUpSubmitButton {
+  width: 25vw;
+  background-color: #0166ff;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+.SignUpInputDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 25vw;
+  flex-direction: column;
+}
+.StepperDivStyle {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.warningStyle {
+  color: black;
+  height: 20px;
+}
+.loadingAnimation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

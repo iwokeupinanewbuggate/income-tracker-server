@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.leftSide {
+  width: 50vw;
+  background-color: white;
+  height: 100vh;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.iconNameContanier {
+  color: black;
+  font-family: sans-serif;
+  display: flex;
+  gap: 10px;
+}
+
+.welcomingMessage {
+  color: black;
+  font-family: sans-serif;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcomeBack {
+  font-size: 20px;
+}
+
+.message {
+  color: #334155;
+}
+
+.extraOptionContainer {
+  display: flex;
+  width: 300px;
+  justify-content: space-evenly;
+  font-size: 13px;
+  color: black;
+  font-family: sans-serif;
+}
+
+.goToSignUp {
+  color: #0166ff;
+}
+
+.rightSide {
+  width: 50vw;
+  height: 100vh;
+  background-color: #0166ff;
+}

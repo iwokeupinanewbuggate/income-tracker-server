@@ -32,3 +32,25 @@
   max-height: 20vh;
   max-width: 20vw;
 }
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+}
+
+.secondLabelContainer {
+  display: flex;
+  align-items: center;
+  width: 150px;
+}
+
+.eachCategory {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.extraInfo {
+  width: 70px;
+}

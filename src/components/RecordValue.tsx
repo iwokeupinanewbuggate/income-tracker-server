@@ -1,5 +1,6 @@
 import styles from "@/styles/postRecordStyle/postRecord.module.css";
 import { ChangeEventHandler } from "react";
+
 export const AmountCategoryDate = ({
   PostTrancsaction,
   handleExpIncClick,

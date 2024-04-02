@@ -1,28 +1,32 @@
+import { useEffect, useState } from "react";
 import CardPic from "../../public/Large.png";
+import styles from "@/styles/cards/wealthCard.module.css";
 const Wealth = () => {
+  const [amount, setAmount] = useState<number | null>(null);
+  useEffect(() => {
+    const getAmount = () => {
+      const cashAmount = localStorage.getItem("Wealth");
+      if (cashAmount !== null) {
+        const parsedAmount = parseFloat(cashAmount);
+        setAmount(parsedAmount);
+      }
+    };
+    getAmount();
+  }, []);
+
   return (
     <>
       <div
         style={{
           backgroundImage: `url(${CardPic.src})`,
-          height: "215px",
-          width: "400px",
-          position: "relative",
-          backgroundRepeat: "no-repeat",
         }}
+        className={styles.container}
       >
-        <div
-          style={{
-            fontFamily: "sans-serif",
-            position: "absolute",
-            bottom: "40px",
-            left: "35px",
-          }}
-        >
-          <p style={{ color: "#808080", margin: "5px" }}>Cash</p>
-          <p style={{ color: "white", fontSize: "20px" }}>1000000</p>
+        <div className={styles.infoContainer}>
+          <p className={styles.cash}>Cash</p>
+          <p className={styles.cashAmount}>{amount}</p>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 };

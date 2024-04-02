@@ -8,3 +8,18 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.recordListContainer {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.BarsContainer {
+  width: 100%;
+  color: #000;
+}
+
+.cardContainer {
+  padding-top: 10px;
+}

@@ -1,7 +1,8 @@
 import { MoneyIcon } from "@/icons/money";
 import Button from "@mui/material/Button";
-import axios from "axios";
+// import axios from "axios";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import styles from "@/styles/Stepper/selectCurrency.module.css";
 
 interface SelectCurrencyProps {
   currencyOptions: string[];
@@ -11,31 +12,23 @@ const Selectcurrency: React.FC<SelectCurrencyProps> = ({
   currencyOptions,
   setActiveStep,
 }) => {
-  const selectCurrency = async (e: ChangeEvent<HTMLSelectElement>) => {
-    const id = localStorage.getItem("id");
-    console.log(id);
-    try {
-      await axios.put(`http://localhost:9090`, {
-        currency_type: e.target.value,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const selectCurrency = (e: ChangeEvent<HTMLSelectElement>) => {
+    localStorage.setItem("currency", e.target.value);
+    // const id = localStorage.getItem("id");
+    // console.log(id);
+    // try {
+    //   await axios.put(`http://localhost:9090`, {
+    //     currency_type: e.target.value,
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   const nextStep = () => {
     setActiveStep((prevActiveStep: number) => prevActiveStep + 1);
   };
   return (
-    <div
-      style={{
-        color: "black",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "20px",
-      }}
-    >
+    <div className={styles.contanier}>
       <div
         style={{
           width: "45px",

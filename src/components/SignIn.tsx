@@ -1,9 +1,8 @@
 import axios, { AxiosError } from "axios";
-import { RegisterStyle } from "@/pages/register/register";
 import { ChangeEventHandler, useState } from "react";
 import Router from "next/router";
 import { Hourglass } from "react-loader-spinner";
-
+import styles from "@/styles/SignIn/signInComponent.module.css";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [emialErr, setEmailErr] = useState("");
@@ -40,8 +39,6 @@ const SignIn = () => {
             password: pass,
           }
         );
-        console.log(res);
-
         if (res.status === 200) {
           alert(`Welcome Back `);
           setLoading(false);
@@ -60,67 +57,43 @@ const SignIn = () => {
     }
   };
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          gap: "10px",
-        }}
-      >
-        <div>
-          <input
-            style={RegisterStyle.inputStyle}
-            value={email}
-            onChange={handleEmail}
-            placeholder="Email"
-          />
-          <p
-            style={{ color: "black", fontFamily: "sans-serif", height: "20px" }}
-          >
-            {emialErr}
-          </p>
-          <input
-            type="password"
-            style={RegisterStyle.inputStyle}
-            value={pass}
-            onChange={handlePass}
-            placeholder="Password"
-          />
-          <p
-            style={{ color: "black", fontFamily: "sans-serif", height: "20px" }}
-          >
-            {passErr}
-          </p>
-        </div>
-        {loading ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            render(
-            <Hourglass
-              visible={true}
-              height="40"
-              width="40"
-              ariaLabel="hourglass-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              colors={["#306cce", "#72a1ed"]}
-            />
-            )
-          </div>
-        ) : (
-          <button style={RegisterStyle.SignUpSubmitButton} onClick={login}>
-            Log in
-          </button>
-        )}
+    <div className={styles.container}>
+      <div>
+        <input
+          className={styles.inputStyle}
+          value={email}
+          onChange={handleEmail}
+          placeholder="Email"
+        />
+        <p className={styles.warning}>{emialErr}</p>
+        <input
+          type="password"
+          className={styles.inputStyle}
+          value={pass}
+          onChange={handlePass}
+          placeholder="Password"
+        />
+        <p className={styles.warning}>{passErr}</p>
       </div>
+      {loading ? (
+        <div className={styles.loadingAnimationContainer}>
+          render(
+          <Hourglass
+            visible={true}
+            height="40"
+            width="40"
+            ariaLabel="hourglass-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            colors={["#306cce", "#72a1ed"]}
+          />
+          )
+        </div>
+      ) : (
+        <button className={styles.SignUpSubmitButton} onClick={login}>
+          Log in
+        </button>
+      )}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import RecordHistory from "./RecordsBody";
-import styles from "@/styles/Records/lastRecord.module.css";
+import styles from "@/styles/Records/lastRecordList.module.css";
 type DataType = {
   _id: string;
   category: string;
@@ -9,6 +9,7 @@ type DataType = {
   transactionType: string;
 };
 export const Record = ({ data }: { data: DataType[] }) => {
+  const lastFiveRecord = data.slice(-10);
   return (
     <>
       <div className={styles.container}>
@@ -16,7 +17,7 @@ export const Record = ({ data }: { data: DataType[] }) => {
           <h3>Last Records</h3>
         </div>
         <div className={styles.recordContainer}>
-          {data.map((info, key) => {
+          {lastFiveRecord.map((info, key) => {
             return <RecordHistory info={info} key={key} />;
           })}
         </div>

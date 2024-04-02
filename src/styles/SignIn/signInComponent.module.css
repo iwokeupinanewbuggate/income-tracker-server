@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.warning {
+  color: black;
+  font-family: sans-serif;
+  height: 20px;
+}
+
+.loadingAnimationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputStyle {
+  background-color: #f3f4f6;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 5px;
+  width: 25vw;
+  color: black;
+}
+
+.SignUpSubmitButton {
+  width: 25vw;
+  background-color: #0166ff;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}

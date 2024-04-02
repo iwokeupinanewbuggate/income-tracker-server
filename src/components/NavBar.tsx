@@ -3,7 +3,23 @@ import { GeldIcons } from "@/icons/geld";
 import Router, { useRouter } from "next/router";
 import PostRecord from "./PostRecord";
 import styles from "@/styles/navBar.module.css";
-const NavBar = () => {
+import { Dispatch, SetStateAction } from "react";
+interface TransactionType {
+  _id: string;
+  transactionType: string;
+  transactionTitle: string;
+  amount: string;
+  category: string;
+  note: string;
+  createdAt: string;
+}
+const NavBar = ({
+  transaction,
+  setTransaction,
+}: {
+  transaction: TransactionType[];
+  setTransaction: Dispatch<SetStateAction<TransactionType[]>>;
+}) => {
   const queryPath = useRouter().pathname;
   const isPageOnRegisterPage =
     queryPath === "/register" || queryPath === "/login";
@@ -46,7 +62,11 @@ const NavBar = () => {
       <div className={styles.buttonContainer}>
         {!isPageOnRegisterPage && (
           <div className={styles.postButton}>
-            <Plus /> <PostRecord />
+            <Plus />{" "}
+            <PostRecord
+              transaction={transaction}
+              setTransaction={setTransaction}
+            />
           </div>
         )}
       </div>

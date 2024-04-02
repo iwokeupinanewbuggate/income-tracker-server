@@ -102,7 +102,7 @@ export const EditAmountCategoryDate = ({
           onClick={EditTransaction}
           className={styles.addRecord}
         >
-          Add Record
+          Edit Record
         </button>
       </div>
     </div>

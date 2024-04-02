@@ -20,7 +20,22 @@ const style = {
   color: "black",
 };
 
-export default function PostRecord() {
+interface TransactionType {
+  _id: string;
+  transactionType: string;
+  transactionTitle: string;
+  amount: string;
+  category: string;
+  note: string;
+  createdAt: string;
+}
+export default function PostRecord({
+  transaction,
+  setTransaction,
+}: {
+  transaction: TransactionType[];
+  setTransaction: React.Dispatch<React.SetStateAction<TransactionType[]>>;
+}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,7 +47,11 @@ export default function PostRecord() {
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <PostValue handleClose={handleClose} />
+          <PostValue
+            transaction={transaction}
+            setTransaction={setTransaction}
+            handleClose={handleClose}
+          />
         </Box>
       </Modal>
     </div>

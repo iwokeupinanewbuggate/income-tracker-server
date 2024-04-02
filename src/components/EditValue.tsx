@@ -10,7 +10,7 @@ interface TransactionType {
   amount: string;
   category: string;
   note: string;
-  date: string;
+  createdAt: string;
 }
 export const EditValue = ({
   handleClose,
@@ -30,7 +30,7 @@ export const EditValue = ({
   const [transactionType, setTransactionType] = useState("expense");
   const [amount, setAmount] = useState(transactionInfo.amount);
   const [category, setCategory] = useState(transactionInfo.category);
-  const [date, setDate] = useState(transactionInfo.date);
+  const [date, setDate] = useState(transactionInfo.createdAt);
   const [title, setTitle] = useState(transactionInfo.transactionTitle);
   const [note, setNote] = useState(transactionInfo.note);
   const [buttonColor, setButtonColor] = useState("#0166FF");
@@ -62,9 +62,22 @@ export const EditValue = ({
             createdAt: date,
           }
         );
-        // transaction.filter((record) => {
-        //   record._id === res.data._id;
-        // });
+        const editedTransaction = transaction.map((record) => {
+          if (record._id === transactionId) {
+            return {
+              ...record,
+              amount: amount,
+              createdAt: date,
+              transactionTitle: title,
+              note: note,
+              category: category,
+              transactionType: transactionType,
+            };
+          } else {
+            return record;
+          }
+        });
+        setTransaction(editedTransaction);
         console.log(res);
         handleClose();
       } catch (err) {

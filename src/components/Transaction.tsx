@@ -4,6 +4,7 @@ import styles from "@/styles/Records/recordInfo.module.css";
 import axios from "axios";
 import { Dispatch, SetStateAction } from "react";
 import EditTransaction from "./EditTransaction";
+import DateConverter from "./TimeConverter";
 
 interface TransactionType {
   _id: string;
@@ -12,7 +13,7 @@ interface TransactionType {
   amount: string;
   category: string;
   note: string;
-  date: string;
+  createdAt: string;
 }
 export const RecordTransaction = ({
   key,
@@ -34,8 +35,6 @@ export const RecordTransaction = ({
       );
       const filteredData = transaction.filter((fact) => fact._id !== res.data);
       setTransaction(filteredData);
-      console.log(res);
-      console.log(filteredData);
     } catch (error) {
       console.log(error);
     }
@@ -48,6 +47,7 @@ export const RecordTransaction = ({
     if (transactionInfo.transactionType === "expense") return "-";
     return "+";
   };
+
   return (
     <div key={key}>
       <div className={styles.container}>
@@ -58,6 +58,9 @@ export const RecordTransaction = ({
           <div style={{ color: "black" }}>
             <h3>{transactionInfo.transactionTitle}</h3>
             <p>{transactionInfo.category}</p>
+            {transactionInfo.createdAt && (
+              <DateConverter createdAt={transactionInfo.createdAt.toString()} />
+            )}
           </div>
           <div>{transactionInfo.note}</div>
           <div>

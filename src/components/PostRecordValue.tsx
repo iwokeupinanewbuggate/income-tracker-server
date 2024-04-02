@@ -3,7 +3,25 @@ import axios from "axios";
 import { useState } from "react";
 import { NoteTitle } from "./RecordTItleNote";
 import { AmountCategoryDate } from "./RecordValue";
-export const PostValue = ({ handleClose }: { handleClose: () => void }) => {
+interface TransactionType {
+  _id: string;
+  transactionType: string;
+  transactionTitle: string;
+  amount: string;
+  category: string;
+  note: string;
+  createdAt: string;
+}
+
+export const PostValue = ({
+  handleClose,
+  transaction,
+  setTransaction,
+}: {
+  handleClose: () => void;
+  transaction: TransactionType[];
+  setTransaction: React.Dispatch<React.SetStateAction<TransactionType[]>>;
+}) => {
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("#F3F4F6");
   const [transactionType, setTransactionType] = useState("expense");
@@ -26,6 +44,7 @@ export const PostValue = ({ handleClose }: { handleClose: () => void }) => {
       setButtonColor("#16A34A");
     }
   };
+
   const PostTrancsaction = async () => {
     const RealAmount = parseInt(amount, 10);
     if (category !== "" && date !== "" && title !== "") {
@@ -41,7 +60,7 @@ export const PostValue = ({ handleClose }: { handleClose: () => void }) => {
             createdAt: date,
           }
         );
-        console.log(res);
+        setTransaction([...transaction, { ...res.data }]);
         handleClose();
       } catch (err) {
         console.log(err);

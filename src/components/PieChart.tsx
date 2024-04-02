@@ -49,27 +49,20 @@ const Labels = () => {
   return (
     <div>
       {categories.map((category, index) => (
-        <div key={index} style={{ display: "flex", alignItems: "center" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              width: "150px",
-            }}
-          >
+        <div key={index} className={styles.labelContainer}>
+          <div className={styles.secondLabelContainer}>
             <div
               style={{
-                width: "20px",
-                height: "20px",
                 backgroundColor: colors[index],
-                margin: "5px",
-                borderRadius: "50%",
               }}
+              className={styles.eachCategory}
             />
             <p>{category}</p>
           </div>
-          <div style={{ width: "70px" }}>{expenses[index]}$</div>
-          <div style={{ width: "70px" }}>{(expenses[index] * 100) / sum}%</div>
+          <div className={styles.extraInfo}>{expenses[index]}$</div>
+          <div className={styles.extraInfo}>
+            {(expenses[index] * 100) / sum}%
+          </div>
         </div>
       ))}
     </div>

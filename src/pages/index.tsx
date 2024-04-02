@@ -8,11 +8,12 @@ import axios from "axios";
 
 type DataType = {
   _id: string;
-  category: string;
+  transactionType: string;
   transactionTitle: string;
   amount: string;
+  category: string;
+  note: string;
   createdAt: string;
-  transactionType: string;
 };
 
 export default function Home() {
@@ -32,32 +33,17 @@ export default function Home() {
 
   return (
     <>
-      <NavBar />
+      <NavBar transaction={data} setTransaction={setData} />
       <div className={styles.container}>
-        <div
-          style={{
-            paddingTop: "10px",
-          }}
-        >
-          <WealthIncomeExpense />
+        <div className={styles.cardContainer}>
+          <WealthIncomeExpense data={data} />
         </div>
 
-        <div
-          style={{
-            width: "100%",
-            color: "#000",
-          }}
-        >
+        <div className={styles.BarsContainer}>
           <VerticelDoughnutBars />
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            backgroundColor: "white",
-            borderRadius: "10px",
-          }}
-        >
+        <div className={styles.recordListContainer}>
           <Record data={data} />
         </div>
       </div>

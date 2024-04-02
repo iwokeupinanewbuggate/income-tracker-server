@@ -12,7 +12,7 @@ interface TransactionType {
   amount: string;
   category: string;
   note: string;
-  date: string;
+  createdAt: string;
 }
 
 const defaultCategoryList = [
@@ -28,7 +28,6 @@ const defaultCategoryList = [
 export default function Records() {
   const [transaction, setTransaction] = useState<TransactionType[]>([]);
   const [category, setCategory] = useState("");
-  // const [allCategory, setAllCategory] = useState([]);
   const [filterType, setFilterTyle] = useState<string>("all");
 
   useEffect(() => {
@@ -42,20 +41,7 @@ export default function Records() {
       }
     };
     GetAllTransaction();
-    // showCat();
   }, []);
-
-  // const showCat = () => {
-  //   const sum: [] = [];
-  //   transaction.map((cat) => {
-  //     sum.push(cat.category);
-  //   });
-  //   const uniqueElements = [...new Set(sum)];
-  //   const smth = uniqueElements.concat(defaultCategoryList);
-  //   const smth2 = [...new Set(smth)];
-  //   setAllCategory(smth2);
-  //   console.log(smth2);
-  // };
 
   const filteredByType =
     filterType === "income"
@@ -80,7 +66,7 @@ export default function Records() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar transaction={transaction} setTransaction={setTransaction} />
       <div className={styles.container}>
         <RecordFilter
           filterType={filterType}
@@ -88,7 +74,6 @@ export default function Records() {
           defaultCategoryList={defaultCategoryList}
           findTheCategory={findTheCategory}
         />
-        {/* <button onClick={showCat}>SHow</button> */}
         <div className={styles.recordTransactionContainer}>
           {data.map((transactionInfo, key: number) => {
             return (

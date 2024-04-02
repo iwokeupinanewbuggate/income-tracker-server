@@ -1,0 +1,47 @@
+.container {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.iconNameContainer {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  top: 5vh;
+  position: absolute;
+  font-family: sans-serif;
+  color: black;
+}
+
+.checkList {
+  top: 15vh;
+  position: absolute;
+}
+
+.lastStepContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  gap: 35px;
+  color: black;
+}
+
+.extraInfo {
+  color: #475569;
+  width: 350px;
+}
+
+.goToButton {
+  padding: 20px;
+  background-color: #0166ff;
+  color: white;
+  width: 40vw;
+  border-radius: 30px;
+}

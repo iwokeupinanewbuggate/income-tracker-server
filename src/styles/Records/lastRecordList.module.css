@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  padding: 20px;
+  font-family: sans-serif;
+  height: 30vh;
+}
+
+.title {
+  border-bottom: 1px #d2d4d2 solid;
+  width: 88vw;
+  padding: 20pxs;
+}
+
+.recordContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  overflow: scroll;
+  height: 30vh;
+}

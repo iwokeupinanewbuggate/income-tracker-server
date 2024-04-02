@@ -1,0 +1,42 @@
+.contanier {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  font-family: sans-serif;
+}
+
+.iconContainer {
+  width: 45px;
+  height: 45px;
+  background-color: #0166ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputStyle {
+  width: 40vw;
+  background-color: #f3f4f6;
+  padding: 20px;
+  border: #757574;
+  border-radius: 10px;
+  color: black;
+}
+
+.hint {
+  font-family: sans-serif;
+  color: #475569;
+  width: 37vw;
+}
+
+.confirm {
+  padding: 20px;
+  background-color: #0166ff;
+  color: white;
+  width: 40vw;
+  border-radius: 30px;
+}

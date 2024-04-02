@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import Router from "next/router";
 import { ChangeEventHandler, useState } from "react";
-import { RegisterStyle } from "@/pages/register/register";
+import styles from "@/styles/SignUp/signUpcomponents.module.css";
 import { Hourglass } from "react-loader-spinner";
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -25,7 +25,6 @@ const SignUp = () => {
             password: pass,
           }
         );
-        console.log(response);
         setEmail(""), setPass(""), setName(""), setRePass("");
         setLoading(false);
         if (response.status === 200) {
@@ -80,47 +79,41 @@ const SignUp = () => {
     setRePass(RePassChecker);
   };
   return (
-    <div style={{ ...RegisterStyle.SignUpInputDiv, flexDirection: "column" }}>
+    <div className={styles.SignUpInputDiv}>
       <div>
         <input
           placeholder="Name"
           value={name}
           onChange={handleName}
-          style={RegisterStyle.inputStyle}
+          className={styles.inputStyle}
         />
-        <p style={{ color: "black", height: "20px" }}>{nameErr}</p>
+        <p className={styles.warningStyle}>{nameErr}</p>
         <input
           placeholder="Email"
           value={email}
           onChange={handleEmail}
-          style={RegisterStyle.inputStyle}
+          className={styles.inputStyle}
         />
-        <p style={{ color: "black", height: "20px" }}>{emailErr}</p>
+        <p className={styles.warningStyle}>{emailErr}</p>
         <input
           placeholder="Password"
           type="password"
           value={pass}
           onChange={handlePass}
-          style={RegisterStyle.inputStyle}
+          className={styles.inputStyle}
         />
-        <p style={{ color: "black", height: "20px" }}>{passErr}</p>
+        <p className={styles.warningStyle}>{passErr}</p>
         <input
           placeholder="Re-password"
           type="password"
           value={RePass}
           onChange={handleRePass}
-          style={RegisterStyle.inputStyle}
+          className={styles.inputStyle}
         />
-        <p style={{ color: "black", height: "20px" }}>{RePassErr}</p>
+        <p className={styles.warningStyle}>{RePassErr}</p>
       </div>
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div className={styles.loadingAnimation}>
           <Hourglass
             visible={true}
             height="40"
@@ -132,10 +125,7 @@ const SignUp = () => {
           />
         </div>
       ) : (
-        <button
-          style={RegisterStyle.SignUpSubmitButton}
-          onClick={() => signUp()}
-        >
+        <button className={styles.SignUpSubmitButton} onClick={() => signUp()}>
           Sign Up
         </button>
       )}

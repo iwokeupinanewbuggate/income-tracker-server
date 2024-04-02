@@ -1,0 +1,23 @@
+.infoContainer {
+  font-family: sans-serif;
+  position: absolute;
+  bottom: 40px;
+  left: 35px;
+}
+
+.container {
+  height: 215px;
+  width: 384.5px;
+  position: relative;
+  background-image: no-repeat;
+}
+
+.cash {
+  color: #808080;
+  margin: 5px;
+}
+
+.cashAmount {
+  color: white;
+  font-size: 20px;
+}

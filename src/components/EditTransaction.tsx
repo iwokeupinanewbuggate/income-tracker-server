@@ -28,7 +28,7 @@ interface TransactionType {
   amount: string;
   category: string;
   note: string;
-  date: string;
+  createdAt: string;
 }
 
 export default function EditTransaction({
