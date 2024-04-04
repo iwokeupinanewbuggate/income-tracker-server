@@ -5,7 +5,7 @@ import DateConverter from "./TimeConverter";
 interface Record {
   category: string;
   transactionTitle: string;
-  amount: string;
+  amount: number;
   createdAt: Date | string;
   transactionType: string;
 }

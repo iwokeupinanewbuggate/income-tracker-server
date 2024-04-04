@@ -4,7 +4,7 @@ type DataType = {
   _id: string;
   category: string;
   transactionTitle: string;
-  amount: string;
+  amount: number;
   createdAt: string;
   transactionType: string;
 };
