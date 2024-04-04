@@ -37,7 +37,7 @@ const data: ChartData<"bar"> = {
     {
       label: "Expense",
       data: labels.map(() => {
-        return Math.random() * 30;
+        return Math.random() * 40;
       }),
       backgroundColor: "#F97316",
       borderRadius: 30,
