@@ -35,7 +35,7 @@ export default function Records() {
       const id = localStorage.getItem("id");
       try {
         const res = await axios.get(
-          ` http://localhost:9090/getMyRecords/${id}`
+          ` https://income-tracker-service-4glo.onrender.com/getMyRecords/${id}`
         );
         setTransaction(res.data);
         console.log(res.data);
