@@ -2,30 +2,55 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import styles from "@/styles/Bars/doughnutBar.module.css";
-const categories = ["Bills", "Food", "Shopping", "Insurance", "Clothing"];
-const expenses = [300, 50, 100, 200, 150];
-const colors = ["#1C64F2", "#E74694", "#FDBA8C", `#16BDCA`, `#F2901C`];
+
+const colors = [
+  "#1C64F2",
+  "#E74694",
+  "#FDBA8C",
+  `#16BDCA`,
+  `#F2901C`,
+  `#14438f`,
+  `#b5537c`,
+  `#a19927`,
+];
 ChartJS.register(ArcElement, Tooltip, Legend);
-const sum = expenses.reduce((a, b) => a + b, 0);
 
-const dataSet = {
-  labels: categories,
-  datasets: [
-    {
-      data: expenses,
-      backgroundColor: colors,
-    },
-  ],
+type DataType = {
+  _id: string;
+  transactionType: string;
+  transactionTitle: string;
+  amount: number;
+  category: string;
+  note: string;
+  createdAt: string;
 };
 
-const options = {
-  plugins: {
-    legend: {
-      display: false,
+function DoughnutChart({ data }: { data: DataType[] }) {
+  const expneseIncome = data.map((record) => {
+    return record.amount;
+  });
+  const category = data.map((record) => {
+    return record.category;
+  });
+  const sum = expneseIncome.reduce((a, b) => a + b, 0);
+  const dataSet = {
+    labels: category,
+    datasets: [
+      {
+        data: expneseIncome,
+        backgroundColor: colors,
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
     },
-  },
-};
-function DoughnutChart() {
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.incomeExpenseSum}>
@@ -40,15 +65,28 @@ function DoughnutChart() {
           options={options}
           className={styles.doughnutSize}
         />
-        <Labels />
+        <Labels data={data} expneseIncome={expneseIncome} sum={sum} />
       </div>
     </div>
   );
 }
-const Labels = () => {
+const Labels = ({
+  data,
+  expneseIncome,
+  sum,
+}: {
+  data: DataType[];
+  expneseIncome: number[];
+  sum: number;
+}) => {
+  const percentage = ({ index }: { index: number }) => {
+    const percent = Math.round((expneseIncome[index] * 100) / sum);
+    return <p>{percent}</p>;
+  };
+
   return (
     <div>
-      {categories.map((category, index) => (
+      {data.map((record, index) => (
         <div key={index} className={styles.labelContainer}>
           <div className={styles.secondLabelContainer}>
             <div
@@ -57,12 +95,10 @@ const Labels = () => {
               }}
               className={styles.eachCategory}
             />
-            <p>{category}</p>
+            <p>{record.category}</p>
           </div>
-          <div className={styles.extraInfo}>{expenses[index]}$</div>
-          <div className={styles.extraInfo}>
-            {(expenses[index] * 100) / sum}%
-          </div>
+          <div className={styles.extraInfo}>{expneseIncome[index]}$</div>
+          <div className={styles.extraInfo}>{percentage({ index })}%</div>
         </div>
       ))}
     </div>

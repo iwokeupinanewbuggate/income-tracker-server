@@ -86,7 +86,6 @@ export const AmountCategoryDate = ({
             <option value="Donation">Donation</option>
             <option value="Gift">Gift</option>
             <option value="Lend">Lend</option>
-            <option value="Scam">Scam</option>
           </select>
         </div>
         <div className={styles.eachValue}>

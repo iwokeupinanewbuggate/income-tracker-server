@@ -54,7 +54,7 @@ export default function Home() {
         </div>
 
         <div className={styles.BarsContainer}>
-          <VerticelDoughnutBars />
+          <VerticelDoughnutBars data={data} />
         </div>
 
         <div className={styles.recordListContainer}>

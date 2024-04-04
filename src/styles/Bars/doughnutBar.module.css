@@ -52,5 +52,6 @@
 }
 
 .extraInfo {
+  display: flex;
   width: 70px;
 }
