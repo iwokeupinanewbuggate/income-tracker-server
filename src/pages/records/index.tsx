@@ -32,8 +32,11 @@ export default function Records() {
 
   useEffect(() => {
     const GetAllTransaction = async () => {
+      const id = localStorage.getItem("id");
       try {
-        const res = await axios.get(` http://localhost:9090/GetRecords`);
+        const res = await axios.get(
+          ` http://localhost:9090/getMyRecords/${id}`
+        );
         setTransaction(res.data);
         console.log(res.data);
       } catch (err) {

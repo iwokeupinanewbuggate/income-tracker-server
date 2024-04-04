@@ -51,3 +51,9 @@
   display: flex;
   gap: 5px;
 }
+
+.allCardContainer{
+  display: flex;
+  width: 90vwd;
+  justify-content: space-evenly;
+}

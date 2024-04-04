@@ -44,14 +44,15 @@ export const PostValue = ({
       setButtonColor("#16A34A");
     }
   };
-
   const PostTrancsaction = async () => {
     const RealAmount = parseInt(amount, 10);
     if (category !== "" && date !== "" && title !== "") {
+      const userId = localStorage.getItem("id");
       try {
         const res = await axios.post(
           `http://localhost:9090/CreateTransaction`,
           {
+            userId: userId,
             transactionType: transactionType,
             amount: RealAmount,
             transactionTitle: title,

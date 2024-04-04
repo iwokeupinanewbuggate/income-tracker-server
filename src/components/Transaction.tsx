@@ -62,15 +62,23 @@ export const RecordTransaction = ({
               <DateConverter createdAt={transactionInfo.createdAt.toString()} />
             )}
           </div>
-          <div>{transactionInfo.note}</div>
+          <div
+            style={{
+              width: "20vw",
+              height: "8vh",
+              display: "flex",
+              overflow: "scroll",
+            }}
+          >
+            {transactionInfo.note}
+          </div>
           <div>
             {
               <div
                 style={{
-                  display: "flex",
                   color: `${getBgColor(transactionInfo)}`,
-                  alignItems: "center",
                 }}
+                className={styles.transactionAmount}
               >
                 <p>{expenseOrIncome(transactionInfo)}</p>
                 <p>{transactionInfo.amount}</p>

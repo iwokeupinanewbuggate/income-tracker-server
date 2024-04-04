@@ -1,7 +1,15 @@
 import { ExpenseIcon } from "@/icons/ExpenseIcon";
 import { IncomeIcon } from "@/icons/incomeIcon";
 import styles from "@/styles/cards/totalCard.module.css";
-export const Card = ({ type, amount }: { type: string; amount: string }) => {
+export const Card = ({
+  type,
+  income,
+  expense,
+}: {
+  type: string;
+  income: number;
+  expense: number;
+}) => {
   return (
     <div className={styles.container}>
       <div className={styles.secondContainer}>
@@ -18,7 +26,9 @@ export const Card = ({ type, amount }: { type: string; amount: string }) => {
           </div>
         )}
         <div className={styles.line}></div>
-        <h1>{amount}</h1>
+        {type === "Income" && <h1>{income}</h1>}
+        {type === "Expense" && <h1>{expense}</h1>}
+
         <p>Your {type} Amount</p>
         <div className={styles.iconContainer}>
           {type === "Income" && (

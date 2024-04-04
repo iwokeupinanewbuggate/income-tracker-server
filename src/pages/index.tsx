@@ -20,8 +20,9 @@ export default function Home() {
   const [data, setData] = useState<DataType[]>([]);
   useEffect(() => {
     const getRecords = async () => {
+      const id = localStorage.getItem("id");
       try {
-        const res = await axios.get(`http://localhost:9090/GetRecords`);
+        const res = await axios.get(`http://localhost:9090/getMyRecords/${id}`);
         console.log(res);
         setData(res.data);
       } catch (err) {

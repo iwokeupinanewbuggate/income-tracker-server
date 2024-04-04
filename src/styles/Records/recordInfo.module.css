@@ -32,3 +32,8 @@
   align-items: center;
   width: 4vw;
 }
+
+.transactionAmount{
+  display: flex;  
+  align-items: center;
+}
