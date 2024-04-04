@@ -31,7 +31,7 @@ export const RecordTransaction = ({
   const deleteFact = async () => {
     try {
       const res = await axios.delete(
-        `http://localhost:9090/deleteTransaction/${transactionId}`
+        `https://income-tracker-service-4glo.onrender.com/deleteTransaction/${transactionId}`
       );
       const filteredData = transaction.filter((fact) => fact._id !== res.data);
       setTransaction(filteredData);

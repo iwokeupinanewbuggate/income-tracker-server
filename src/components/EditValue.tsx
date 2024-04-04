@@ -51,7 +51,7 @@ export const EditValue = ({
     if (category !== "" && date !== "" && title !== "") {
       try {
         const res = await axios.put(
-          `http://localhost:9090/editTransaction/${transactionId}`,
+          `https://income-tracker-service-4glo.onrender.com/editTransaction/${transactionId}`,
           {
             transactionType: transactionType,
             amount: amount,

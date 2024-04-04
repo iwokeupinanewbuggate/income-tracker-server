@@ -49,7 +49,7 @@ export const PostValue = ({
       const userId = localStorage.getItem("id");
       try {
         const res = await axios.post(
-          `http://localhost:9090/CreateTransaction`,
+          `https://income-tracker-service-4glo.onrender.com/CreateTransaction`,
           {
             userId: userId,
             transactionType: transactionType,
