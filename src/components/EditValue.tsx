@@ -7,7 +7,7 @@ interface TransactionType {
   _id: string;
   transactionType: string;
   transactionTitle: string;
-  amount: string;
+  amount: number;
   category: string;
   note: string;
   createdAt: string;
@@ -48,14 +48,13 @@ export const EditValue = ({
     }
   };
   const EditTRansaction = async () => {
-    const RealAmount = parseInt(amount, 10);
     if (category !== "" && date !== "" && title !== "") {
       try {
         const res = await axios.put(
           `http://localhost:9090/editTransaction/${transactionId}`,
           {
             transactionType: transactionType,
-            amount: RealAmount,
+            amount: amount,
             transactionTitle: title,
             note: note,
             category: category,
@@ -86,14 +85,6 @@ export const EditValue = ({
     } else {
       console.log("Fill in the inputs");
     }
-    console.log(
-      category,
-      date,
-      title,
-      transactionType,
-      RealAmount,
-      transactionId
-    );
   };
 
   return (

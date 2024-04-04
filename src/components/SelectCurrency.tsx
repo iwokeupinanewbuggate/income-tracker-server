@@ -14,15 +14,6 @@ const Selectcurrency: React.FC<SelectCurrencyProps> = ({
 }) => {
   const selectCurrency = (e: ChangeEvent<HTMLSelectElement>) => {
     localStorage.setItem("currency", e.target.value);
-    // const id = localStorage.getItem("id");
-    // console.log(id);
-    // try {
-    //   await axios.put(`http://localhost:9090`, {
-    //     currency_type: e.target.value,
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
   const nextStep = () => {
     setActiveStep((prevActiveStep: number) => prevActiveStep + 1);

@@ -16,18 +16,18 @@ export const AmountCategoryDate = ({
 }: {
   PostTrancsaction: () => void;
   handleExpIncClick: (buttonNumber: number) => void;
-  setAmount: (newAmount: string) => void;
+  setAmount: (newAmount: number) => void;
   setCategory: (newCategory: string) => void;
   setDate: (newDate: string) => void;
   buttonColor: string;
   income: string;
   expense: string;
-  amount: string;
+  amount: number;
   category: string;
   date: string;
 }) => {
   const handleAmount: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setAmount(event.target.value);
+    setAmount(parseFloat(event.target.value));
   };
   const handleCategory: ChangeEventHandler<HTMLSelectElement> = (event) => {
     setCategory(event.target.value);

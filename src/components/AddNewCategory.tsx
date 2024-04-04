@@ -38,7 +38,6 @@ export const AddNewCategory = () => {
         });
         console.log(res);
         handleClose();
-        // const uniqueItems = [...new Set(originalArray)];
       } catch (err) {
         console.log(err);
       }

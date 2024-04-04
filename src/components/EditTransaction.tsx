@@ -25,7 +25,7 @@ interface TransactionType {
   _id: string;
   transactionType: string;
   transactionTitle: string;
-  amount: string;
+  amount: number;
   category: string;
   note: string;
   createdAt: string;

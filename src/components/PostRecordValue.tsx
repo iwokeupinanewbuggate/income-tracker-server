@@ -25,7 +25,7 @@ export const PostValue = ({
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("#F3F4F6");
   const [transactionType, setTransactionType] = useState("expense");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
@@ -45,7 +45,6 @@ export const PostValue = ({
     }
   };
   const PostTrancsaction = async () => {
-    const RealAmount = parseInt(amount, 10);
     if (category !== "" && date !== "" && title !== "") {
       const userId = localStorage.getItem("id");
       try {
@@ -54,7 +53,7 @@ export const PostValue = ({
           {
             userId: userId,
             transactionType: transactionType,
-            amount: RealAmount,
+            amount: amount,
             transactionTitle: title,
             note: note,
             category: category,
@@ -69,7 +68,6 @@ export const PostValue = ({
     } else {
       console.log("Fill in the inputs");
     }
-    console.log(category, date, title, transactionType, RealAmount);
   };
 
   return (
