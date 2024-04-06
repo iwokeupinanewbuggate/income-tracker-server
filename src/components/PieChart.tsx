@@ -26,18 +26,39 @@ type DataType = {
 };
 
 function DoughnutChart({ data }: { data: DataType[] }) {
-  const expneseIncome = data.map((record) => {
+  const updatedData = (newData: DataType[]) => {
+    return newData.map((newRecord) => {
+      const existingRecords = data.filter(
+        (record) => record.category === newRecord.category
+      );
+      if (existingRecords.length > 0) {
+        const totalAmount = existingRecords.reduce(
+          (acc, record) => acc + record.amount,
+          0
+        );
+        return {
+          ...existingRecords[0],
+          amount: totalAmount + newRecord.amount,
+        };
+      } else {
+        return newRecord;
+      }
+    });
+  };
+
+  const updatedDataSet = updatedData(data);
+
+  const expneseIncome = updatedDataSet.map((record) => {
     return record.amount;
   });
-  const category = data.map((record) => {
-    return record.category;
-  });
+
   const sum = expneseIncome.reduce((a, b) => a + b, 0);
+
   const dataSet = {
-    labels: category,
+    labels: updatedDataSet.map((record) => record.category),
     datasets: [
       {
-        data: expneseIncome,
+        data: updatedDataSet.map((record) => record.amount),
         backgroundColor: colors,
       },
     ],
@@ -65,7 +86,9 @@ function DoughnutChart({ data }: { data: DataType[] }) {
           options={options}
           className={styles.doughnutSize}
         />
-        <Labels data={data} expneseIncome={expneseIncome} sum={sum} />
+        <div style={{ overflow: "scroll" }}>
+          <Labels data={data} expneseIncome={expneseIncome} sum={sum} />
+        </div>
       </div>
     </div>
   );

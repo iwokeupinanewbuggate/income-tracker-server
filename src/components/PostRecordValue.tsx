@@ -25,7 +25,7 @@ export const PostValue = ({
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("#F3F4F6");
   const [transactionType, setTransactionType] = useState("expense");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(Number);
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
@@ -45,8 +45,11 @@ export const PostValue = ({
     }
   };
   const PostTrancsaction = async () => {
-    if (category !== "" && date !== "" && title !== "") {
-      const userId = localStorage.getItem("id");
+    if (date !== "" && title !== "") {
+      if (category == "") {
+        setCategory("Food");
+      }
+      const userId = localStorage.getItem("id")?.toString();
       try {
         const res = await axios.post(
           `https://income-tracker-service-4glo.onrender.com/CreateTransaction`,
