@@ -46,7 +46,7 @@ export const PostValue = ({
   };
   const PostTrancsaction = async () => {
     if (date !== "" && title !== "") {
-      if (category == "") {
+      if (category === "") {
         setCategory("Food");
       }
       const userId = localStorage.getItem("id")?.toString();

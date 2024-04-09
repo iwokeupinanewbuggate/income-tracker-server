@@ -24,41 +24,43 @@ type DataType = {
   note: string;
   createdAt: string;
 };
+type MergedDataType = {
+  category: string;
+};
 
 function DoughnutChart({ data }: { data: DataType[] }) {
-  const updatedData = (newData: DataType[]) => {
-    return newData.map((newRecord) => {
-      const existingRecords = data.filter(
-        (record) => record.category === newRecord.category
-      );
-      if (existingRecords.length > 0) {
-        const totalAmount = existingRecords.reduce(
-          (acc, record) => acc + record.amount,
-          0
-        );
-        return {
-          ...existingRecords[0],
-          amount: totalAmount + newRecord.amount,
-        };
+  const mergeCategoryAmounts = (data: DataType[]) => {
+    const mergedData: { [category: string]: number } = {};
+
+    data.forEach((record) => {
+      const { category, amount } = record;
+      if (mergedData[category]) {
+        mergedData[category] += amount;
       } else {
-        return newRecord;
+        mergedData[category] = amount;
       }
     });
+
+    const result = [];
+    for (const category in mergedData) {
+      result.push({ category, amount: mergedData[category] });
+    }
+
+    return result;
   };
 
-  const updatedDataSet = updatedData(data);
+  const mergedData = mergeCategoryAmounts(data);
 
-  const expneseIncome = updatedDataSet.map((record) => {
-    return record.amount;
+  const expneseIncome = mergedData.map((rec) => {
+    return rec.amount;
   });
-
   const sum = expneseIncome.reduce((a, b) => a + b, 0);
 
   const dataSet = {
-    labels: updatedDataSet.map((record) => record.category),
+    labels: mergedData.map((record) => record.category),
     datasets: [
       {
-        data: updatedDataSet.map((record) => record.amount),
+        data: mergedData.map((record) => record.amount),
         backgroundColor: colors,
       },
     ],
@@ -87,18 +89,22 @@ function DoughnutChart({ data }: { data: DataType[] }) {
           className={styles.doughnutSize}
         />
         <div style={{ overflow: "scroll" }}>
-          <Labels data={data} expneseIncome={expneseIncome} sum={sum} />
+          <Labels
+            mergedData={mergedData}
+            expneseIncome={expneseIncome}
+            sum={sum}
+          />
         </div>
       </div>
     </div>
   );
 }
 const Labels = ({
-  data,
+  mergedData,
   expneseIncome,
   sum,
 }: {
-  data: DataType[];
+  mergedData: MergedDataType[];
   expneseIncome: number[];
   sum: number;
 }) => {
@@ -109,7 +115,7 @@ const Labels = ({
 
   return (
     <div>
-      {data.map((record, index) => (
+      {mergedData.map((record, index) => (
         <div key={index} className={styles.labelContainer}>
           <div className={styles.secondLabelContainer}>
             <div
