@@ -29,14 +29,19 @@ export const RecordTransaction = ({
   setTransaction: Dispatch<SetStateAction<TransactionType[]>>;
 }) => {
   const deleteFact = async () => {
-    try {
-      const res = await axios.delete(
-        `https://income-tracker-service-4glo.onrender.com/deleteTransaction/${transactionId}`
-      );
-      const filteredData = transaction.filter((fact) => fact._id !== res.data);
-      setTransaction(filteredData);
-    } catch (error) {
-      console.log(error);
+    const deleteConfirmation = confirm("Delete this transaction?");
+    if (deleteConfirmation) {
+      try {
+        const res = await axios.delete(
+          `https://income-tracker-service-4glo.onrender.com/deleteTransaction/${transactionId}`
+        );
+        const filteredData = transaction.filter(
+          (fact) => fact._id !== res.data
+        );
+        setTransaction(filteredData);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   const getBgColor = (transactionInfo: TransactionType) => {
