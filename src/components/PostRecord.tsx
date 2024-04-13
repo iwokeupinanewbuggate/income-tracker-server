@@ -13,7 +13,7 @@ const style = {
   justifyContent: "center",
   alignItems: "center",
   width: "50vw",
-  height: "49vh",
+  height: "55vh",
   border: "none",
   backgroundColor: "white",
   borderRadius: "20px",

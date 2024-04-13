@@ -14,6 +14,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 5vh;
 }
 
 .navbar {
@@ -95,9 +96,13 @@
 .valueContainer {
   display: flex;
   gap: 2vw;
-  padding-top: 20px;
 }
 
+.eachValueContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
 .eachValue {
   display: flex;
   flex-direction: column;

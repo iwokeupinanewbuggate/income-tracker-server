@@ -12,6 +12,7 @@ const colors = [
   `#14438f`,
   `#b5537c`,
   `#a19927`,
+  `#701e42`,
 ];
 ChartJS.register(ArcElement, Tooltip, Legend);
 

@@ -85,6 +85,8 @@ export const EditAmountCategoryDate = ({
             <option value="Donation">Donation</option>
             <option value="Gift">Gift</option>
             <option value="Lend">Lend</option>
+            <option value="Accessories">Accessories</option>
+            <option value="MicroTransaction">MicroTransaction</option>
           </select>
         </div>
         <div className={styles.eachValue}>
