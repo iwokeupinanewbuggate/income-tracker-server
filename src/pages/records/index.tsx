@@ -38,7 +38,6 @@ export default function Records() {
           ` https://income-tracker-service-4glo.onrender.com/getMyRecords/${id}`
         );
         setTransaction(res.data);
-        console.log(res.data);
       } catch (err) {
         console.log(err);
       }

@@ -13,7 +13,7 @@ type DataType = {
 export const VerticelDoughnutBars = ({ data }: { data: DataType[] }) => {
   return (
     <div className={styles.barsContainer}>
-      <VerticleBar />
+      <VerticleBar data={data} />
       <DoughnutChart data={data} />
     </div>
   );

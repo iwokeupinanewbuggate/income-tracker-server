@@ -6,7 +6,6 @@ import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Router from "next/router";
-
 type DataType = {
   _id: string;
   transactionType: string;
@@ -22,7 +21,6 @@ export default function Home() {
   useEffect(() => {
     const check = () => {
       const protection = localStorage.getItem("id");
-      console.log(protection);
       if (protection) {
         Router.push("/");
       } else {
@@ -36,7 +34,6 @@ export default function Home() {
         const res = await axios.get(
           `https://income-tracker-service-4glo.onrender.com/getMyRecords/${id}`
         );
-        console.log(res);
         setData(res.data);
       } catch (err) {
         console.log(err);
