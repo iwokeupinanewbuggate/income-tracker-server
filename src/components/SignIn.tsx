@@ -43,8 +43,8 @@ const SignIn = () => {
         if (res.status === 200) {
           alert(`Welcome Back `);
           setLoading(false);
-        localStorage.setItem("id",res.data.user._id)
-          Router.push("/");
+          localStorage.setItem("id",res.data.user._id)
+          Router.push("/Stepper");
         }
       } catch (err) {
         if ((err as AxiosError).response?.status === 404) {
