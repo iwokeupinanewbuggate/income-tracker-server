@@ -10,11 +10,6 @@ type DataType = {
   transactionType: string;
 };
 export const WealthIncomeExpense = ({ data }: { data: DataType[] }) => {
-  // let allIncome = 0;
-  // let allExpense = 0;
-  // const wealthString = localStorage.getItem("Wealth");
-  // const wealth = wealthString !== null ? parseFloat(wealthString) : 0;
-  // const actualWealth = Math.floor(wealth + allIncome - allExpense);
   return (
     <div className={styles.allCardContainer}>
       <Wealth />

@@ -30,7 +30,8 @@ const SignIn = () => {
 
   const login = async () => {
     if (pass !== "" && email !== "") {
-      try {
+      if (emialErr === "" && passErr === "") {
+        try {
         setLoading(true);
         const res = await axios.post(
           `https://income-tracker-service-4glo.onrender.com/user`,
@@ -52,6 +53,10 @@ const SignIn = () => {
         }
         setLoading(false);
       }
+      } else {
+        alert("Invalid values")
+      }
+      
     } else {
       alert("Please fill all the input");
     }

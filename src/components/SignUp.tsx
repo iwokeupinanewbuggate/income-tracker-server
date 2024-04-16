@@ -14,8 +14,17 @@ const SignUp = () => {
   const [RePassErr, setRePassErr] = useState("");
   const [loading, setLoading] = useState(false);
   const signUp = async (): Promise<void> => {
-    if (name !== "" && email !== "" && pass !== "" && RePass !== "") {
-      try {
+    if (
+      name !== "" &&
+      email !== "" &&
+      pass !== "" &&
+      RePass !== "" 
+    ) {
+      if ( nameErr === "" &&
+      emailErr === "" &&
+      passErr === "" &&
+      RePassErr === "") {
+          try {
         setLoading(true);
         const response = await axios.post(
           `https://income-tracker-service-4glo.onrender.com/users`,
@@ -38,6 +47,10 @@ const SignUp = () => {
           alert("Email already used");
         }
       }
+      } else {
+        alert("Invalide values");
+      }
+    
     } else {
       alert("Fill all the input");
     }

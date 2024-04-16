@@ -17,6 +17,7 @@ const Selectcurrency: React.FC<SelectCurrencyProps> = ({
   };
   const nextStep = () => {
     setActiveStep((prevActiveStep: number) => prevActiveStep + 1);
+    localStorage.setItem("currency", "MNT - Mongolian Tugrik");
   };
   return (
     <div className={styles.contanier}>
