@@ -80,7 +80,7 @@ export const PostValue = ({
         console.log(err);
       }
     } else {
-      console.log("Fill in the inputs");
+      alert("Fill in the inputs");
     }
   };
 
