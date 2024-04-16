@@ -20,6 +20,10 @@ const NavBar = ({
   transaction: TransactionType[];
   setTransaction: Dispatch<SetStateAction<TransactionType[]>>;
 }) => {
+  const logOut = () => {
+    Router.push("/login")
+    localStorage.removeItem("id")
+  }
   const queryPath = useRouter().pathname;
   const isPageOnRegisterPage =
     queryPath === "/register" || queryPath === "/login";
@@ -59,6 +63,11 @@ const NavBar = ({
           </div>
         )}
       </div>
+      {!isPageOnRegisterPage && (
+        <div>
+          <button onClick={logOut}>Log out </button>
+        </div>
+      )}
       <div className={styles.buttonContainer}>
         {!isPageOnRegisterPage && (
           <div className={styles.postButton}>

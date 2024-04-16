@@ -2,10 +2,22 @@ import SignUp from "@/components/SignUp";
 import { GeldIcons } from "@/icons/geld";
 import Router from "next/router";
 import styles from "@/styles/SignUp/singUpindex.module.css";
+import { useEffect } from "react";
 const Register = () => {
   const toLogin = () => {
     Router.push("/login");
   };
+  useEffect(() => {
+    const isUserAlreadySignedIn = () => {
+    const id = localStorage.getItem("id")
+    if ( id) {
+      Router.push("/")
+    } else {
+      Router.push("/register")
+    }
+  }
+  isUserAlreadySignedIn()
+  })
   return (
     <div className={styles.container}>
       <div className={styles.leftSide}>

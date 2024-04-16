@@ -3,7 +3,7 @@ import CardPic from "../../public/Large.png";
 import styles from "@/styles/cards/wealthCard.module.css";
 const Wealth = () => {
   const [amount, setAmount] = useState<number | null>(null);
-  const currency = localStorage.getItem("currency")?.slice(0, 3) ?? [];
+  const [currency, setCurrency] = useState<string>("");
   useEffect(() => {
     const getAmount = () => {
       const cashAmount = localStorage.getItem("Wealth");
@@ -13,6 +13,16 @@ const Wealth = () => {
       }
     };
 
+    const getCurrency = () => {
+      if (typeof window !== 'undefined') {
+        const currencyItem = localStorage.getItem("currency");
+        if (currencyItem !== null) {
+          const slicedCurrency = currencyItem.slice(0, 3);
+          setCurrency(slicedCurrency);
+        }
+      }
+    };
+    getCurrency()
     getAmount();
   }, []);
 

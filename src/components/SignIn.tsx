@@ -43,6 +43,7 @@ const SignIn = () => {
         if (res.status === 200) {
           alert(`Welcome Back `);
           setLoading(false);
+        localStorage.setItem("id",res.data.user._id)
           Router.push("/");
         }
       } catch (err) {

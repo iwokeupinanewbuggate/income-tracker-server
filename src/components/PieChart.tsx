@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import styles from "@/styles/Bars/doughnutBar.module.css";
@@ -82,21 +82,23 @@ function DoughnutChart({ data }: { data: DataType[] }) {
         <p>Total: {sum}$</p>
       </div>
       <div className={styles.doughnutContainer} />
-
-      <div className={styles.doughnutLabelContainer}>
-        <Doughnut
-          data={dataSet}
-          options={options}
-          className={styles.doughnutSize}
-        />
-        <div style={{ overflow: "scroll" }}>
-          <Labels
-            mergedData={mergedData}
-            expneseIncome={expneseIncome}
-            sum={sum}
+      {data.length < 0 && <div className={styles.doughnutLabelContainer}>DoughNut chart will be here</div>}
+      {data.length > 0 && (
+        <div className={styles.doughnutLabelContainer}>
+          <Doughnut
+            data={dataSet}
+            options={options}
+            className={styles.doughnutSize}
           />
+          <div style={{ overflow: "scroll" }}>
+            <Labels
+              mergedData={mergedData}
+              expneseIncome={expneseIncome}
+              sum={sum}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
