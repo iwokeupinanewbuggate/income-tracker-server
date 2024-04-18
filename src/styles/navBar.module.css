@@ -18,6 +18,7 @@
   background-color: white;
   border: none;
   color: black;
+  cursor: pointer;
 }
 .buttonContainer {
   display: flex;
@@ -33,4 +34,13 @@
   gap: 5px;
   border-radius: 10px;
   padding: 5px;
+}
+
+.logOut {
+  padding: 15px;
+  background-color: #0166ff;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
 }

@@ -47,12 +47,7 @@
   border-bottom: 1px #e2e8f0 solid;
 }
 
-.iconContainer {
-  display: flex;
-  gap: 5px;
-}
-
-.allCardContainer{
+.allCardContainer {
   display: flex;
   width: 90vwd;
   justify-content: space-evenly;

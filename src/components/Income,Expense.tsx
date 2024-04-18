@@ -41,20 +41,6 @@ export const Card = ({ type, data }: { type: string; data: DataType[] }) => {
         {type === "Expense" && <h1>{allExpense}</h1>}
 
         <p>Your {type} Amount</p>
-        <div className={styles.iconContainer}>
-          {type === "Income" && (
-            <div>
-              <IncomeIcon />
-            </div>
-          )}
-          {type === "Expense" && (
-            <div>
-              <ExpenseIcon />
-            </div>
-          )}
-
-          <p>32% from last month</p>
-        </div>
       </div>
     </div>
   );

@@ -32,32 +32,30 @@ const SignIn = () => {
     if (pass !== "" && email !== "") {
       if (emialErr === "" && passErr === "") {
         try {
-        setLoading(true);
-        const res = await axios.post(
-          `https://income-tracker-service-4glo.onrender.com/user`,
-          {
-            email: email,
-            password: pass,
+          setLoading(true);
+          const res = await axios.post(
+            `https://income-tracker-service-4glo.onrender.com/user`,
+            {
+              email: email,
+              password: pass,
+            }
+          );
+          if (res.status === 200) {
+            alert(`Welcome Back `);
+            setLoading(false);
+            localStorage.setItem("id", res.data.user._id);
           }
-        );
-        if (res.status === 200) {
-          alert(`Welcome Back `);
+        } catch (err) {
+          if ((err as AxiosError).response?.status === 404) {
+            alert("Couldn't find the account");
+          } else {
+            alert("Password incorrect");
+          }
           setLoading(false);
-          localStorage.setItem("id",res.data.user._id)
-          Router.push("/Stepper");
         }
-      } catch (err) {
-        if ((err as AxiosError).response?.status === 404) {
-          alert("Couldn't find the account");
-        } else {
-          alert("Password incorrect");
-        }
-        setLoading(false);
-      }
       } else {
-        alert("Invalid values")
+        alert("Invalid values");
       }
-      
     } else {
       alert("Please fill all the input");
     }
@@ -83,7 +81,6 @@ const SignIn = () => {
       </div>
       {loading ? (
         <div className={styles.loadingAnimationContainer}>
-          render(
           <Hourglass
             visible={true}
             height="40"
@@ -93,7 +90,6 @@ const SignIn = () => {
             wrapperClass=""
             colors={["#306cce", "#72a1ed"]}
           />
-          )
         </div>
       ) : (
         <button className={styles.SignUpSubmitButton} onClick={login}>

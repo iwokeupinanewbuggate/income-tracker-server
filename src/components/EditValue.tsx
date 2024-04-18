@@ -1,8 +1,9 @@
 import styles from "@/styles/postRecordStyle/postRecord.module.css";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EditAmountCategoryDate } from "./EditessentialValue";
 import { EditNoteTitle } from "./EditDetail";
+import { toast } from "react-toastify";
 interface TransactionType {
   _id: string;
   transactionType: string;
@@ -27,13 +28,24 @@ export const EditValue = ({
 }) => {
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("#F3F4F6");
-  const [transactionType, setTransactionType] = useState("expense");
+  const [transactionType, setTransactionType] = useState(transactionInfo.transactionType);
   const [amount, setAmount] = useState(transactionInfo.amount);
   const [category, setCategory] = useState(transactionInfo.category);
   const [date, setDate] = useState(transactionInfo.createdAt);
   const [title, setTitle] = useState(transactionInfo.transactionTitle);
   const [note, setNote] = useState(transactionInfo.note);
   const [buttonColor, setButtonColor] = useState("#0166FF");
+  useEffect(() => {
+    if (transactionType === "expense") {
+      setButtonColor("#0166FF")
+      setExpense("#0166FF")
+      setIncome("#F3F4F6")
+    } else {
+      setButtonColor("#16A34A")
+      setExpense("#F3F4F6")
+      setIncome("#16A34A")
+    }
+  },[])
   const handleExpIncClick = (buttonNumber: number) => {
     if (buttonNumber === 1) {
       setExpense("#0166FF");
@@ -75,6 +87,15 @@ export const EditValue = ({
           } else {
             return record;
           }
+        });
+        toast.success("Successfully Created ", {
+          position: "bottom-left",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "dark",
         });
         setTransaction(editedTransaction);
         console.log(res);

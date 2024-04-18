@@ -14,43 +14,39 @@ const SignUp = () => {
   const [RePassErr, setRePassErr] = useState("");
   const [loading, setLoading] = useState(false);
   const signUp = async (): Promise<void> => {
-    if (
-      name !== "" &&
-      email !== "" &&
-      pass !== "" &&
-      RePass !== "" 
-    ) {
-      if ( nameErr === "" &&
-      emailErr === "" &&
-      passErr === "" &&
-      RePassErr === "") {
-          try {
-        setLoading(true);
-        const response = await axios.post(
-          `https://income-tracker-service-4glo.onrender.com/users`,
-          {
-            name: name,
-            email: email,
-            password: pass,
+    if (name !== "" && email !== "" && pass !== "" && RePass !== "") {
+      if (
+        nameErr === "" &&
+        emailErr === "" &&
+        passErr === "" &&
+        RePassErr === ""
+      ) {
+        try {
+          setLoading(true);
+          const response = await axios.post(
+            `https://income-tracker-service-4glo.onrender.com/users`,
+            {
+              name: name,
+              email: email,
+              password: pass,
+            }
+          );
+          setEmail(""), setPass(""), setName(""), setRePass("");
+          setLoading(false);
+          if (response.status === 200) {
+            alert("Successfully signed up");
           }
-        );
-        setEmail(""), setPass(""), setName(""), setRePass("");
-        setLoading(false);
-        if (response.status === 200) {
-          alert("Successfully signed up");
+          localStorage.setItem("id", response.data.user._id);
+          Router.push("/stepper");
+        } catch (err) {
+          setLoading(false);
+          if ((err as AxiosError).response?.status === 400) {
+            alert("Email already used");
+          }
         }
-        Router.push("/Stepper");
-        localStorage.setItem("id", response.data.user._id);
-      } catch (err) {
-        setLoading(false);
-        if ((err as AxiosError).response?.status === 400) {
-          alert("Email already used");
-        }
-      }
       } else {
         alert("Invalide values");
       }
-    
     } else {
       alert("Fill all the input");
     }

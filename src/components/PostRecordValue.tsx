@@ -86,7 +86,6 @@ export const PostValue = ({
 
   return (
     <>
-      <ToastContainer />
       <div className={styles.container}>
         <div className={styles.navbar}>
           <h3>Add Record</h3>
@@ -116,6 +115,7 @@ export const PostValue = ({
           />
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

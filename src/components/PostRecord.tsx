@@ -43,7 +43,7 @@ export default function PostRecord({
   return (
     <div>
       <Button className={styles.postButton} onClick={handleOpen}>
-        Record
+        Add record
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

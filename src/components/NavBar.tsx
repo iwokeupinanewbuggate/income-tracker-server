@@ -62,13 +62,7 @@ const NavBar = ({
             )}
           </div>
         )}
-      </div>
-      {!isPageOnRegisterPage && (
-        <div>
-          <button onClick={logOut}>Log out </button>
-        </div>
-      )}
-      <div className={styles.buttonContainer}>
+      </div> <div className={styles.buttonContainer}>
         {!isPageOnRegisterPage && (
           <div className={styles.postButton}>
             <Plus />{" "}
@@ -79,6 +73,12 @@ const NavBar = ({
           </div>
         )}
       </div>
+      {!isPageOnRegisterPage && (
+        <div>
+          <button className={styles.logOut} onClick={logOut}>Log out </button>
+        </div>
+      )}
+     
     </div>
   );
 };
