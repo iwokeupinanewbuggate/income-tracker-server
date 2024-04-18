@@ -1,6 +1,5 @@
 import axios, { AxiosError } from "axios";
 import { ChangeEventHandler, useState } from "react";
-import Router from "next/router";
 import { Hourglass } from "react-loader-spinner";
 import styles from "@/styles/SignIn/signInComponent.module.css";
 const SignIn = () => {

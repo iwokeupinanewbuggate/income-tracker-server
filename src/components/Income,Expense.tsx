@@ -1,5 +1,3 @@
-import { ExpenseIcon } from "@/icons/ExpenseIcon";
-import { IncomeIcon } from "@/icons/incomeIcon";
 import styles from "@/styles/cards/totalCard.module.css";
 
 type DataType = {
