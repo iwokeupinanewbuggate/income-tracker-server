@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState } from "react";
 import { NoteTitle } from "./RecordTItleNote";
 import { AmountCategoryDate } from "./RecordValue";
-import { ToastContainer, toast } from "react-toastify";
 
 interface TransactionType {
   _id: string;
@@ -65,15 +64,6 @@ export const PostValue = ({
             createdAt: date,
           }
         );
-        toast.success("Successfully Created ", {
-          position: "bottom-left",
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          theme: "dark",
-        });
         setTransaction([...transaction, { ...res.data }]);
         handleClose();
       } catch (err) {
@@ -115,7 +105,6 @@ export const PostValue = ({
           />
         </div>
       </div>
-      <ToastContainer />
     </>
   );
 };

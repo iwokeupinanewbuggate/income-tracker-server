@@ -3,7 +3,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { EditAmountCategoryDate } from "./EditessentialValue";
 import { EditNoteTitle } from "./EditDetail";
-import { toast } from "react-toastify";
 interface TransactionType {
   _id: string;
   transactionType: string;
@@ -87,15 +86,6 @@ export const EditValue = ({
           } else {
             return record;
           }
-        });
-        toast.success("Successfully Created ", {
-          position: "bottom-left",
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          theme: "dark",
         });
         setTransaction(editedTransaction);
         console.log(res);
