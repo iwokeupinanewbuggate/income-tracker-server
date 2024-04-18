@@ -33,7 +33,7 @@ export const AddNewCategory = () => {
   const addCategory = async () => {
     if (newCategory !== "") {
       try {
-        const res = await axios.post(`http://localhost:9090/addNewCategory`, {
+        const res = await axios.post(`https://income-tracker-service-4glo.onrender.com/addNewCategory`, {
           category: newCategory,
         });
         console.log(res);
