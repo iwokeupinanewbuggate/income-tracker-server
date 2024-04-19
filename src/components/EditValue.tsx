@@ -1,6 +1,6 @@
 import styles from "@/styles/postRecordStyle/postRecord.module.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EditAmountCategoryDate } from "./EditessentialValue";
 import { EditNoteTitle } from "./EditDetail";
 interface TransactionType {
