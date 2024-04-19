@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   font-family: sans-serif;
+  height: 50vh;
 }
 .container {
   display: flex;

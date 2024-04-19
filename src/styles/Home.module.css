@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 95vh;
+  height: 91.5vh;
   background-color: #e8e8e8;
   padding-left: 5vw;
   padding-right: 5vw;
@@ -22,4 +22,8 @@
 
 .cardContainer {
   padding-top: 10px;
+}
+
+.body{
+  background-color:#e8e8e8;
 }

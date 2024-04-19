@@ -6,14 +6,14 @@ import { PostValue } from "./PostRecordValue";
 import styles from "@/styles/postRecordStyle/postRecord.module.css";
 const style = {
   position: "absolute",
-  top: "30%",
+  top: "20%",
   left: "25vw",
   right: "25vw",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   width: "50vw",
-  height: "55vh",
+  height: "70vh",
   border: "none",
   backgroundColor: "white",
   borderRadius: "20px",
